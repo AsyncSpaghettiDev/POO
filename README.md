@@ -1,2 +1,2 @@
 # POO
-Curso de Programación Orientada a Objetos
+Repositorio para guardar los relacionado a Programación Orientada a Objetos
