@@ -1,6 +1,6 @@
 # Ejercicio markdown
 ## Instalación de dotnet core 2.2.
-<div class="pull right"><img src=./Img/dnt.png width=15% length=15%>
+<div class="pull-right"><img src=./Img/dnt.png width=15% length=15%>
 
 Paso 1: Buscar **dotnet core** en el navegador de tu preferencia.  
 Paso 2: Entrar en la página oficial de Microsoft.  
