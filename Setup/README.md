@@ -30,8 +30,7 @@ Paso 6: Ejecutar el instalador
 Paso 7: Abrir la consola (cmd/powershell/terminal) y escribir lo siguiente (dotnet new console -o "NombreProyecto").    
 Paso 8: Escribir en la consola (cd "NombreProyecto") y (code .)  
 <img src=./img/terminal-vsc.png width=50% length=50%>  
-Paso 9: Dirigirse a la cinta de opciones de la izq y dar click en el "Tetris" (Ctr+Shift+X) para instalar extensiones.
-
+Paso 9: Dirigirse a la cinta de opciones de la izq y dar click en el "Tetris" (Ctr+Shift+X) para instalar extensiones.  
 Paso 10: En el recuadro de busqueda escribir **"C#"** y elegir el distribuido por Microsoft, y dar en Instalar.  
 <img src=./img/ext-c.png>
 
@@ -39,7 +38,7 @@ Paso 10: En el recuadro de busqueda escribir **"C#"** y elegir el distribuido po
 *Nota puedes visitar el sig [link](https://git-scm.com/downloads) y saltar hasta el paso #2*  
 Paso 1: Buscar **git** <img src=./img/git.png width=3% legth=3%> en el navegador de tu preferencia.  
 <img src=./img/bus-git.png width=50% length=50%>  
-Paso 2: Seleccionar la opción donde solo diga Git. 
+Paso 2: Seleccionar la opción donde solo diga Git.  
 Paso 3: Clickear en Downloads, Seleccionar tu Sistema Operativo, y esperar a que se descargue.  
 <img src=./img/vers-git.png width=50% length=50%>  
 Paso 4: Ejecutar el instalador y dar siguiente y acepto.  
