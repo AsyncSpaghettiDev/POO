@@ -15,4 +15,4 @@ Paso 1: Buscar **visual studio code** en el navegador de tu preferencia.
 Paso 2: Entrar en la página oficial de Microsoft.  
 Paso 3: 
 
-## Instalar GitHub
+## Instalar Git y Vincular con VSC
