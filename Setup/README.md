@@ -61,9 +61,10 @@ Una vez terminemos de hacer los cambios en el archivo deberemos actualizarlo a n
 Paso 1: Ubicarnos de preferencia en la raiz de nuestro repositorio clonado, en este caso POO.  
 Paso 2: Abrir la consola de VSC y escribir el sig comando (git status) para ver los archivos que fueron modificados.  
 Paso 3: Ejecutar (git add .) para cargar todos los archivos modificados. *En caso de solo cargar un archivo en específico ejecutar git add NOMBRE_DEL_ARCHIVO_A_ACTUALIZAR*  
-Paso 4: Ejecutar (git commit -m INTRODUCE_LA_LEYENDA_DE_TU_MODIFICACIÓN) para documentar tu/s cambio/s.  
+Paso 4: Ejecutar (git commit -m "INTRODUCE_LA_LEYENDA_DE_TU_MODIFICACIÓN") para documentar tu/s cambio/s.  
+<img src=./img/terminal-git3.png width=50% length=50%>  
 Paso 5: Ejecutar (git push origin master) para mandar tu/s cambio/s a tu repositorio en la nube.  
 Paso 6: Ingresar los datos de tu cuenta para poder llevar a cabo la subida.  
-<img src=./img/terminal-git3.png width=50% length=50%>  
+<img src=./img/terminal-git4.png width=50% length=50%>  
 Paso 7: Refrescar la página de tu repositorio para ver los cambios hechos.  
-<img src=./img/desk-git.png width=50% length=50%>  
+<img src=./img/desk-git2.png width=50% length=50%>  
