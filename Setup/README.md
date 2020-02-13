@@ -29,7 +29,7 @@ Paso 6: Ejecutar el instalador
 
 Paso 7: Abrir la consola (cmd/powershell/terminal) y escribir lo siguiente (dotnet new console -o "NombreProyecto").    
 Paso 8: Escribir en la consola (cd "NombreProyecto") y (code .)  
-<img src=./img/terminal-vsc.png width=50% length=50%>
+<img src=./img/terminal-vsc.png width=50% length=50%>  
 Paso 9: Dirigirse a la cinta de opciones de la izq y dar click en el "Tetris" (Ctr+Shift+X) para instalar extensiones.  
 Paso 10: En el recuadro de busqueda escribir **"C#"** y elegir el distribuido por Microsoft, y dar en Instalar.  
 <img src=./img/ext-c.png>
@@ -57,3 +57,13 @@ Paso 5: Abrir Visual Studio Code desde este directorio usando el siguiente coman
 Listo ya clonamos y podemos modificar nuestro repositorio.
 
 ### Actualizar repositorio de gitHub desde VSC
+Una vez terminemos de hacer los cambios en el archivo deberemos actualizarlo a nuestro repo en la nube, para la cual haremos lo siguiente:  
+Paso 1: Ubicarnos de preferencia en la raiz de nuestro repositorio clonado, en este caso POO.  
+Paso 2: Abrir la consola de VSC y escribir el sig comando (git status) para ver los archivos que fueron modificados.  
+Paso 3: Ejecutar (git add .) para cargar todos los archivos modificados. *En caso de solo cargar un archivo en específico ejecutar git add NOMBRE_DEL_ARCHIVO_A_ACTUALIZAR*  
+Paso 4: Ejecutar (git commit -m INTRODUCE_LA_LEYENDA_DE_TU_MODIFICACIÓN) para documentar tu/s cambio/s.  
+Paso 5: Ejecutar (git push origin master) para mandar tu/s cambio/s a tu repositorio en la nube.  
+Paso 6: Ingresar los datos de tu cuenta para poder llevar a cabo la subida.  
+<img src=./img/terminal-git3.png width=50% length=50%>  
+Paso 7: Refrescar la página de tu repositorio para ver los cambios hechos.  
+<img src=./img/desk-git.png width=50% length=50%>  
