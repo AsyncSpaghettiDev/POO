@@ -17,7 +17,7 @@ Paso 9: Comprobar que se instaló correctamente abriendo CMD y ejecutando "dotne
 
 ## Instalación y configuración de Visual Studio Code para C#.
 *Nota puedes visitar el sig [link](https://code.visualstudio.com/download) y saltar hasta el paso #4.*  
-Paso 1: Buscar **Visual Studio Code** <img src=./img/VSC.png width=5% legth=5%> en el navegador de tu preferencia.  
+Paso 1: Buscar **Visual Studio Code** <img src=./img/VSC.png width=3% legth=3%> en el navegador de tu preferencia.  
 <img src=./img/bus-vsc.png width=50% length=50%>  
 Paso 2: Entrar en la página oficial de Microsoft.  
 Paso 3: Da click en DOWNDLOAD  
