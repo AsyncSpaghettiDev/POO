@@ -12,7 +12,7 @@ Paso 6: Elige tu Sistema operativo y su arquitectura.
 Paso 7: Esperar a que comience la descarga.  
 Paso 8: Ejecutar el instalador.  
 <img src=./img/ins-dnt.png width=50% length=50%>  
-Paso 9: Comprobar que se instaló correctamente abriendo CMD y ejecutando "dotnet info".  
+Paso 9: Comprobar que se instaló correctamente abriendo la consola (cmd/powershell/terminal) y ejecutando "dotnet info".  
 <img src=./img/terminal-dnt.png width=50% legth=50%>
 
 ## Instalación y configuración de Visual Studio Code para C#.
@@ -30,7 +30,8 @@ Paso 6: Ejecutar el instalador
 Paso 7: Abrir la consola (cmd/powershell/terminal) y escribir lo siguiente (dotnet new console -o "NombreProyecto").    
 Paso 8: Escribir en la consola (cd "NombreProyecto") y (code .)  
 <img src=./img/terminal-vsc.png width=50% length=50%>  
-Paso 9: Dirigirse a la cinta de opciones de la izq y dar click en el "Tetris" (Ctr+Shift+X) para instalar extensiones.  
+Paso 9: Dirigirse a la cinta de opciones de la izq y dar click en el "Tetris" (Ctr+Shift+X) para instalar extensiones.
+
 Paso 10: En el recuadro de busqueda escribir **"C#"** y elegir el distribuido por Microsoft, y dar en Instalar.  
 <img src=./img/ext-c.png>
 
@@ -60,10 +61,7 @@ Listo ya clonamos y podemos modificar nuestro repositorio.
 Una vez terminemos de hacer los cambios en el archivo deberemos actualizarlo a nuestro repo en la nube, para la cual haremos lo siguiente:  
 Paso 1: Ubicarnos de preferencia en la raiz de nuestro repositorio clonado, en este caso POO.  
 Paso 2: Abrir la consola de VSC y escribir el sig comando (git status) para ver los archivos que fueron modificados.  
-Paso 3: Ejecutar (git add .) para cargar todos los archivos modificados. *En caso de solo cargar un archivo en específico ejecutar git add NOMBRE_DEL_ARCHIVO_A_ACTUALIZAR*  
-Paso 4: Ejecutar (git commit -m "INTRODUCE_LA_LEYENDA_DE_TU_MODIFICACIÓN") para documentar tu/s cambio/s.  
-<img src=./img/terminal-git3.png width=50% length=50%>  
-Paso 5: Ejecutar (git push origin master) para mandar tu/s cambio/s a tu repositorio en la nube.  
+Paso 3: Ejecutar (git add .) para cargar todos los archivos modificados. *En caso de solo cargar un archivo en específico ejecutar git add NOMBRE_DEL_ARCHIVO_A_ACTUALIZAR*  ¨tu/s cambio/s a tu repositorio en la nube.  
 Paso 6: Ingresar los datos de tu cuenta para poder llevar a cabo la subida.  
 <img src=./img/terminal-git4.png width=50% length=50%>  
 Paso 7: Refrescar la página de tu repositorio para ver los cambios hechos.  
