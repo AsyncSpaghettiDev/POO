@@ -46,5 +46,10 @@ using System.Collections.Generic;
             for(int i=0;i<alumnos.Count;i++){
                 alumnos[i].imprime();
             }
+            Console.WriteLine();
+            /* Tipo de datos "clase", in, nombre de la lista*/
+            foreach(Alumno a in alumnos){
+                a.imprime();
+            }
         }
     }
