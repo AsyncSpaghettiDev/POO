@@ -5,7 +5,6 @@
         private string pais;
         private string director;
         public Pelicula(){
-
         }
         public Pelicula(string titulo,Int16 año){
             this.titulo=titulo;
