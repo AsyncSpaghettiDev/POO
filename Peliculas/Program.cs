@@ -1,26 +1,30 @@
 ﻿using System;
     class Pelicula{
-        public string titulo;
-        public Int16 año;
-        public string pais;
-        public string director;
+        private string titulo;
+        private Int16 año;
+        private string pais;
+        private string director;
+        public void SetTitulo(string titulo){
+            this.titulo=titulo;
+        }
+        public string GetTitulo()=> titulo;
+        public void SetAño(Int16 año){
+            this.año=año;
+        }
+        public Int16 GetAño()=> año;
     }
     class Program{
         static void Main(){
             Pelicula p1=new Pelicula();
-            p1.titulo="La forma del agua";
-            p1.año=2017;
-            p1.pais="Estados Unidos";
-            p1.director="Guillermo del Toro";
+            p1.SetTitulo("La forma del agua");
+            p1.SetAño(2017);
 
-            Console.WriteLine("La película {0} se estrenó el año {1}.",p1.titulo,p1.año);
+            Console.WriteLine("La película {0} se estrenó el año {1}.",p1.GetTitulo(),p1.GetAño());
 
             Pelicula p3=new Pelicula();
-            p3.titulo="El discurso del Rey";
-            p3.año=2010;
-            p3.pais="Reino Unido";
-            p3.director="Tom Hooper";
+            p3.SetTitulo("El discurso del Rey");
+            p3.SetAño(2010);
 
-            Console.WriteLine("La película {0} se estrenó el año {1}.",p3.titulo,p3.año);
+            Console.WriteLine("La película {0} se estrenó el año {1}.",p3.GetTitulo(),p3.GetAño());
         }
     }
