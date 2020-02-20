@@ -4,27 +4,25 @@
         private Int16 año;
         private string pais;
         private string director;
-        public void SetTitulo(string titulo){
-            this.titulo=titulo;
+        public Pelicula(){
+
         }
-        public string GetTitulo()=> titulo;
-        public void SetAño(Int16 año){
+        public Pelicula(string titulo,Int16 año){
+            this.titulo=titulo;
             this.año=año;
         }
-        public Int16 GetAño()=> año;
+        public void imprime(){
+            Console.WriteLine("La película {0} se estrenó el año {1}.",titulo,año);
+        }
     }
     class Program{
         static void Main(){
-            Pelicula p1=new Pelicula();
-            p1.SetTitulo("La forma del agua");
-            p1.SetAño(2017);
+            Pelicula p1=new Pelicula("La forma del Agua",2017);
 
-            Console.WriteLine("La película {0} se estrenó el año {1}.",p1.GetTitulo(),p1.GetAño());
+            p1.imprime();
 
-            Pelicula p3=new Pelicula();
-            p3.SetTitulo("El discurso del Rey");
-            p3.SetAño(2010);
+            Pelicula p3=new Pelicula("El discurso del Rey",2010);
 
-            Console.WriteLine("La película {0} se estrenó el año {1}.",p3.GetTitulo(),p3.GetAño());
+            p3.imprime();
         }
     }
