@@ -8,9 +8,9 @@
     class Program{
         static void Main(){
             Pelicula p1 = new Pelicula();
-            p1.titulo="Interestelar";
-            p1.año=2014;
-            p1.pais="Estados Unidos";
-            p1.director="Christopher Nolan";
+            Pelicula.titulo="Interestelar";
+            Pelicula.año=2014;
+            Pelicula.pais="Estados Unidos";
+            Pelicula.director="Christopher Nolan";
         }
     }
