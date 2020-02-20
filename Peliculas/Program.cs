@@ -7,7 +7,6 @@
     }
     class Program{
         static void Main(){
-            Pelicula p1 = new Pelicula();
             Pelicula.titulo="Interestelar";
             Pelicula.año=2014;
             Pelicula.pais="Estados Unidos";
