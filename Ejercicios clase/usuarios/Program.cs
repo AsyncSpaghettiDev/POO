@@ -31,7 +31,7 @@ using System.Collections.Generic;
         /*Método para imprimir el nombre del usuario y la lista de correos del
         mismo */
         public void print(){
-            Console.WriteLine(nombre);
+            Console.WriteLine("Los correos del usuario {0} son:",nombre);
             foreach (CorreoE c in correos){
                 Console.WriteLine(c.getCorreo());
             }
