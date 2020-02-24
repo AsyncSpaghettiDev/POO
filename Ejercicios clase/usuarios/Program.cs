@@ -25,8 +25,8 @@ using System.Collections.Generic;
         /*Método para que retorne el valor */
         public string getNombre()=>nombre;
         /*Método para crear/asignar un correo al usuario */
-        public void Add(CorreoE c){
-            correos.Add(c);
+        public void Add(CorreoE h){
+            correos.Add(h);
         }
         /*Método para imprimir el nombre del usuario y la lista de correos del
         mismo */
