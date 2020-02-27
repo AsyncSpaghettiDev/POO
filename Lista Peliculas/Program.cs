@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
     class Pelicula{
         private string titulo;
+        public Pelicula(){}
         public Pelicula(string titulo){
             this.titulo=titulo;
         }
