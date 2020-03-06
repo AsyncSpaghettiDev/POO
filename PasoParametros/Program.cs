@@ -1,8 +1,11 @@
 ﻿using System;
 
     class Algebra{
+        public int n;
         public void cuadrado(int a){
             a=a*a;
+            //Se asigna el valor del resultado a la variable n para ver donde se queda
+            n=a;
         }
         public void cuadrado_ref(ref int a){
             a=a*a;
@@ -23,6 +26,9 @@
             /*Se ejecuta la operacion de elevar al cuadrado*/
             operacion.cuadrado(x);
 
+            /*Se imprime el valor de n que tiene el objeto para ver que se queda de manera local*/
+            Console.WriteLine(operacion.n);
+
             /*Se imprime 2 porque solo se ejecutó el método no regresó ningun valor*/
             Console.WriteLine(x);
 
@@ -30,7 +36,7 @@
             operacion.cuadrado_ref(ref x);
 
             /*Al usar el método anterior en modo referencia el valor a imprimir será 4*/
-            Console.Write(x);
+            Console.WriteLine(x);
 
             /*Declaración de variables que se multiplicaran*/
             x=5;
