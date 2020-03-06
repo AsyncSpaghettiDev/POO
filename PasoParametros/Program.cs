@@ -32,6 +32,20 @@
             /*Al usar el método anterior en modo referencia el valor a imprimir será 4*/
             Console.Write(x);
 
-            
+            /*Declaración de variables que se multiplicaran*/
+            x=5;
+            int y=2;
+            int r;//Se declara la variable pero no se inicializa
+
+            /*Se imprime lo que va a devolver el método multiplica*/
+            Console.WriteLine(operacion.multiplica(x,y));
+
+            /*Se ejecuta el método y el valor se guarda en la varible sin asignar llamada r, se imprime para saber que está sin valor
+            Al ejecutarse marcaría error 
+            Console.WriteLine(r);*/
+            operacion.multiplica_out(x,y,out r);
+
+            /*Se imprime la variable r para saber que ahora ya tiene valor*/ 
+            Console.WriteLine(r);
         }
     }
