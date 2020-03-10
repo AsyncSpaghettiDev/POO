@@ -13,4 +13,5 @@
 
 >**OPCIONAL:** _Podemos indicar si un libro se lo prestamos a un amigo, desde que fecha y tenemos su correo para recordarle que nos lo regrese._
 
+_No puede poner la relación entre usuario y libro porque se mezclaban las líneas, pero hay una relación entre ambas._
 <img src=./imgs/UML.png>
