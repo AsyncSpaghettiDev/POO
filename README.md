@@ -7,3 +7,5 @@ Repositorio para guardar los relacionado a Programación Orientada a Objetos
 [Actividad #4](./Actores/Program.cs) Actores  
 [Actividad #5](./UML/README.md) Ejercicios UML  
 [Actividad #6](./PasoParametros/Program.cs) Paso de Parametros  
+[Actividad #7](./Domino/Program.cs) Domino (Sobrecarga Operadores)  
+[Actividad #8](./Duracion/Program.cs) Suma de Duraciones  
