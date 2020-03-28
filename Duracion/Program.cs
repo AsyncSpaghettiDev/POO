@@ -9,20 +9,27 @@ class Duracion{
         this.segundos=segundos;
     }
     public Duracion(int min){
+        this.horas=0;
+        this.segundos=0;
         if(min>59){
-            for(int i=min;i>59;i-=60){
-                int horas=minutos/i;
-                this.horas=horas;
-                this.minutos=i;
+            for(int i=1;i<=24;i++){
+                if(min/60>=1){
+                    this.horas=i;
+                    min=min-60;
+                }
+            else{
+                this.minutos=min;
+                break;
+                } 
             }
         }
-        this.segundos=0;
     }
-    public override string ToString()=>string.Format("{0}:{1}:{2}");
+    public override string ToString()=>string.Format("{0}:{1}:{2}",this.horas,this.minutos,this.segundos);
 }
 class Program{
     static void Main(){
-        Duracion a=new Duracion(60);
-        Console.WriteLine(a);
+        Duracion a=new Duracion(7,35,45);
+        Duracion b=new Duracion(350);
+        Console.WriteLine(b);
     }
 }
