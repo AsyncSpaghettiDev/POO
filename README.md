@@ -8,4 +8,6 @@ Repositorio para guardar los relacionado a Programación Orientada a Objetos
 [Actividad #5](./UML/README.md) Ejercicios UML  
 [Actividad #6](./PasoParametros/Program.cs) Paso de Parametros  
 [Actividad #7](./Domino/Program.cs) Domino (Sobrecarga Operadores)  
-[Actividad #8](./Duracion/Program.cs) Suma de Duraciones  
+[Actividad #8](./Duracion/Program.cs) Suma de Duraciones (Sobrecarga Operadores)  
+[Actividad #9](./Alumnos/Program.cs) Herencia de Alumno a Lic y Pos  
+[Actividad #10](./Musicos/Program.cs) Herencia de Musicos  
