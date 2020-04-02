@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
     /*Creacion de la clase abstracta base musico con el atributo nombre, se declara protected para que
     pueda ser heredado a las otras clases. Se usa la libreria Collectios.Generic para poder
