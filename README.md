@@ -11,3 +11,5 @@ Repositorio para guardar los relacionado a Programación Orientada a Objetos
 [Actividad #8](./Duracion/Program.cs) Suma de Duraciones (Sobrecarga Operadores)  
 [Actividad #9](./Alumnos/Program.cs) Herencia de Alumno a Lic y Pos  
 [Actividad #10](./Musicos/Program.cs) Herencia de Musicos  
+[Actividad #11.1](./Figuras_Abs/Program.cs) Figuras abstractas  
+[Actividad #11.2](./Musicos_Abs/Program.cs) Musicos abstractos  
