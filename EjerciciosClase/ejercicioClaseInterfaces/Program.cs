@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-interface ITrazo{
+interface ITrazo:IComparable{
     int x{get;set;}
     int y{get;set;}
     String color{get;set;}
@@ -34,6 +34,10 @@ class Circulo:ITrazo{
     public void printColor(){
         Console.WriteLine(this.color);
     }
+
+    public int CompareTo(object obj){
+       return this.color.CompareTo((obj as ITrazo).color);
+    }
 }
 class Rectangulo:ITrazo{
     private int _x;
@@ -62,6 +66,12 @@ class Rectangulo:ITrazo{
     public void printColor(){
         Console.WriteLine(this.color);
     }
+    public int CompareTo(object obj){
+        var name=this.GetType().ToString()+" "+this.color;
+        Console.WriteLine(name);
+        Console.WriteLine(obj.GetType().ToString()+(obj as ITrazo).color);
+       return name.CompareTo(obj.GetType().ToString()+" "+(obj as ITrazo).color);
+    }
 }
 class Program{
     static void Main(){
@@ -69,7 +79,9 @@ class Program{
         figuras.Add(new Circulo(12,13,"verde")) ;
         figuras.Add(new Rectangulo(12,13,"azul")) ;
         figuras.Add(new Rectangulo(12,13,"rojo")) ;
-        figuras.Add(new Circulo(12,13,"rojo")) ;
+        figuras.Add(new Circulo(12,13,"rojo"));
+        
+        figuras.Sort();
         foreach(var figura in figuras){
             figura.dibuja();
         }
