@@ -68,8 +68,6 @@ class Rectangulo:ITrazo{
     }
     public int CompareTo(object obj){
         var name=this.GetType().ToString()+" "+this.color;
-        Console.WriteLine(name);
-        Console.WriteLine(obj.GetType().ToString()+(obj as ITrazo).color);
        return name.CompareTo(obj.GetType().ToString()+" "+(obj as ITrazo).color);
     }
 }
