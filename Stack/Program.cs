@@ -43,17 +43,17 @@ class Program{
         var nums = new Stack<int>();
         Random rdm=new Random();
         for(int i=0;i<8;i++)
-            nums.Push(rdm.Next(20));
+            nums.Push(i+1);
         for(int i=0;i<8;i++)
             Console.Write(nums.Pop()+"\t");
 
         Console.WriteLine();
 
         var vocal= new Char[]{'a','e','i','o','u'};
-        var text = new Stack<char>();
-        for(int i=0;i<8;i++)
-            text.Push(vocal[rdm.Next(vocal.Length)]);
-        for(int i=0;i<8;i++)
+        var text = new Stack<char>(vocal.Length);
+        for(int i=0;i<vocal.Length;i++)
+            text.Push(vocal[i]);
+        for(int i=0;i<vocal.Length;i++)
             Console.Write(text.Pop()+"\t");
     }
 }
