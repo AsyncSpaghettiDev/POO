@@ -26,8 +26,20 @@ class Stack<T>{
 }
 class Program{
     static void Main(){
-        var pila = new Stack<int>();
-        pila.Push(15);
-        Console.WriteLine(pila.Pop());
+        var nums = new Stack<int>();
+        Random rdm=new Random();
+        for(int i=0;i<8;i++)
+            nums.Push(rdm.Next(20));
+        for(int i=0;i<8;i++)
+            Console.Write(nums.Pop()+"\t");
+
+        Console.WriteLine();
+
+        var vocal= new Char[]{'a','e','i','o','u'};
+        var text = new Stack<char>();
+        for(int i=0;i<8;i++)
+            text.Push(vocal[rdm.Next(vocal.Length)]);
+        for(int i=0;i<8;i++)
+            Console.Write(text.Pop()+"\t");
     }
 }
