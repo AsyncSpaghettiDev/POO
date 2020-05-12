@@ -1,13 +1,22 @@
 ﻿using System;
+/*Creacion de la clase generica tipo Stack*/
 class Stack<T>{
     private readonly int capacity;
     private int apuntador=0;
     T[] miembros;
+    /*Sobrecarga del constructor*/
     public Stack():this(8){}
+    /*Se establece el tamaño que tendrá la estructura*/
     public Stack(int capacity){
         this.capacity=capacity;
         miembros= new T[this.capacity];
     }
+    /*
+    *Se añade un nuevo miembro a la estructura y se aumenta el apuntador
+    *en caso que este ultimo sea mayor o igual (igual porque la estructura 
+    *empieza en 0) a la capacidad de la estructura se lanza una excepcion 
+    *que indica que la estructura está llena
+    */
     public void Push(T miembro){
         if(this.apuntador>=this.capacity)
             throw new Exception("Stack Lleno");
@@ -16,6 +25,11 @@ class Stack<T>{
             this.apuntador++;
         }
     }
+    /*
+    *Se expulsa el ultimo miembro agregado a la estructura, en caso de que
+    *el apuntador llegue a ser menor que 0 se lanzará una nueva excepcion que
+    *indique que la estructura está vacia
+    */
     public T Pop(){
         this.apuntador--;
         if(this.apuntador>=0)
