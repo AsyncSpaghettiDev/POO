@@ -1,5 +1,7 @@
 ﻿using System;
-
+class EdadOverFlowException: Exception{
+    private EdadOverFlowException():base("Edad no válida"){}
+}
 class Program{
     static void Main(){
         Console.Write("Captura tu edad: ");
