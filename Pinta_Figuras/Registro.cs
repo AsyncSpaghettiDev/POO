@@ -15,7 +15,7 @@ class Registro {
         try {
             textOut = new StreamWriter(new FileStream("./log.txt", FileMode.Append,FileAccess.Write));
             File.SetAttributes("./log.txt", FileAttributes.Hidden);
-            textOut.WriteLine("[{0}] Se dibuja un {1} de {2}", DateTime.Now.ToString("yyyy-mm-dd:hh:mm:ss"), fig, col);
+            textOut.WriteLine("[{0}] Se dibuja un {1} de {2}", DateTime.Now.ToString("yyyy-MM-dd:hh:mm:ss"), fig, col);
         }
         catch (UnauthorizedAccessException) {
             MessageBox.Show("Excepcion de no acceso");
