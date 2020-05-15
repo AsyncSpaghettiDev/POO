@@ -1,10 +1,14 @@
 ﻿using System;
 using System.IO;
+/*Excepcion que indica que el archivo ya existe*/
 class ArchivoExistenteException:Exception{
     public ArchivoExistenteException():base("El archivo ya existe"){
     }
 }
+/*Clase que se encargará de crear,leer y modificar los txt*/
 class Registro{
+    /*Comprobacion de que el archivo existe, de ser asi se lanza una excepcion que
+    indica que el archivo ya existe, se cierra la conexion con el archivo despues*/
     public static void crea(String name){
         FileStream fs=null;
         if(File.Exists("./"+name+".txt"))
@@ -13,6 +17,8 @@ class Registro{
         if(fs!=null)
             fs.Close();
     }
+    /*Se imprime en consola todo el contenido del archivo txt seleccionado, en caso de excepcion se
+    muestra en consola cual es, finalmente si se abrió la conexion con el archivo se cierra*/
     public static void leer(string name){
         StreamReader textIn=null;
         try{
@@ -29,6 +35,8 @@ class Registro{
             textIn.Close();
         }
     }
+    /*Se crea una conexion y se lee de consola la linea que se quiere añadir al archivo
+    si la conexion fue exitosa se cierra*/
     public static void escribe(String name){
         StreamWriter textOut=null;
         try{
