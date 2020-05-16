@@ -27,7 +27,7 @@ public class Funciones {
         Lienzo.MinimizeBox = false;
 
         Lienzo.StartPosition = FormStartPosition.CenterScreen;
-        Lienzo.FormClosed += new FormClosedEventHandler(cerrar);
+        Lienzo.FormClosed += new FormClosedEventHandler(Cerrar);
     }
-    public static void cerrar(object sender, EventArgs e) => Application.Exit();
+    public static void Cerrar(object sender, EventArgs e) => Application.Exit();
 }
