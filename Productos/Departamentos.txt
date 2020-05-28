@@ -1,0 +1,54 @@
+-Perecederos-
+P-100 Frutas y verduras.
+P-200 Pescados y mariscos.
+P-300 Carnes
+P-400 Embutidos
+P-500 Panadería.
+P-600 Tortillería.
+P-700 Cremas y quesos.
+P-800 Lácteos.
+P-900 
+
+-Electronica-
+E-100 Computadoras
+E-200 Telefonia.
+E-300 Televisiones.
+E-400 Aire Acondicionado.
+E-500 ElectroDomesticos.
+E-600 Sistema de Audio.
+E-700
+E-800
+E-900
+
+-Domesticos-
+D-100 Salas de estar.
+D-200 Camas.
+D-300 Escritorios.
+D-400 Armarios.
+D-500 Comedores.
+D-600 Alacenas.
+D-700
+D-800
+D-900
+
+-Moda-
+M-100 Ropa de Caballero.
+M-200 Ropa de Dama.
+M-300 Ropa de Niños.
+M-400 Zapatos de Caballero.
+M-500 Zapatos de Dama.
+M-600 Zapatos de niño.
+M-700 Lenceria.
+M-800 Ropa deportiva.
+M-900
+
+-Otros-
+V-100 Jugueteria.
+V-200 Articulos Escolares.
+V-300 Revistas y libros.
+V-400 Farmacia.
+V-500 
+V-600
+V-700
+V-800
+V-900
