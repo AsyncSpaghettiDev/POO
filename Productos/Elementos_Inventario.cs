@@ -26,14 +26,13 @@ namespace Productos {
 
             //Textbox Departamento
             this.departamento = new MaskedTextBox();
-            this.departamento.Mask = "A-###";
+            this.departamento.Mask = ">L-#\\0\\0";
             this.departamento.BeepOnError = true;
             this.departamento.Name = "la Caja de Texto de Departamento";
             this.departamento.Size = new Size(50, this.departamento.Size.Height);
             this.departamento.Location = new Point(this._departamento.Location.X+4, this._departamento.Location.Y + this._departamento.Size.Height + 10);
             Controls.Add(this.departamento);
-            this.departamento.KeyUp += (sender, e) => limiteChar(sender,e,5,true);
-            this.departamento.LostFocus += salida_Foco;
+            this.departamento.KeyDown += cambiar;
 
             //Label Codigo
             this._code = new Label();
@@ -44,14 +43,13 @@ namespace Productos {
 
             //Textbox Codigo
             this.code = new MaskedTextBox();
-            this.code.Mask = "AAA-###";
+            this.code.Mask = ">LLL-###";
             this.code.BeepOnError = true;
             this.code.Name = "la Caja de Texto de Codigo";
             this.code.Size = new Size(50, this.code.Size.Height);
             this.code.Location = new Point(this._code.Location.X+4, this._code.Location.Y + this._code.Size.Height + 10);
             Controls.Add(this.code);
-            this.code.KeyUp += (sender, e) => limiteChar(sender, e, 7,true);
-            this.code.LostFocus += salida_Foco;
+            this.code.Validating += comprueba;
 
             //Label Likes
             this._likes = new Label();
@@ -66,7 +64,7 @@ namespace Productos {
             this.likes.Size = this.departamento.Size;
             this.likes.Location = new Point(this._likes.Location.X+4, this._likes.Location.Y + this._likes.Size.Height + 10);
             Controls.Add(this.likes);
-            this.likes.KeyUp += (sender, e) => limiteChar(sender, e, 100);
+            this.likes.Validating += comprueba;
 
             //Label Descripcion
             this._descripcion = new Label();
@@ -81,8 +79,7 @@ namespace Productos {
             this.descripcion.Size = new Size(this._likes.Location.X + this._likes.Size.Width - this.departamento.Location.X,this.descripcion.Size.Height/2);
             this.descripcion.Location = new Point(this._descripcion.Location.X, this._descripcion.Location.Y + this._descripcion.Size.Height + 10);
             Controls.Add(this.descripcion);
-            this.descripcion.KeyUp += (sender, e) => limiteChar(sender, e, 50,false);
-            this.LostFocus += salida_Foco;
+            this.descripcion.Validating += comprueba;
 
             //Label de precioInicial
             this._precio = new Label();
@@ -97,9 +94,7 @@ namespace Productos {
             this.precio.Size = this.likes.Size;
             this.precio.Location = new Point(this._precio.Location.X + 4, this._precio.Location.Y + this._precio.Size.Height + 10);
             Controls.Add(this.precio);
-            this.precio.CausesValidation = true;
             this.precio.Validating += comprueba;
-            //this.precio.KeyUp+= (sender, e) => limiteChar(sender, e, 1000);
 
             //Label Fecha
             this._fecha = new Label();
@@ -110,7 +105,7 @@ namespace Productos {
 
             //Texbox Fecha
             this.fecha = new MaskedTextBox();
-            this.fecha.Mask = "##/##/####";
+            this.fecha.Mask = "00/00/0000";
             this.fecha.BeepOnError = true;
             this.fecha.Name = "la caja de Texto de Precio de Lanzamiento";
             this.fecha.Location = new Point(this._fecha.Location.X + 4, this._fecha.Location.Y + this._fecha.Size.Height + 10);
@@ -121,7 +116,7 @@ namespace Productos {
             //Boton para agregar un nuevo producto
             this.agrega = new Button();
             this.agrega.Text = "Agregar producto";
-            this.agrega.Location = new Point(350, 150);
+            this.agrega.Location = new Point(250, 100);
             this.agrega.AutoSize = true;
             this.agrega.Click += new EventHandler(gen_NP);
             Controls.Add(this.agrega);
@@ -140,7 +135,7 @@ namespace Productos {
             this.decide.Text = "Si";
             this.decide.Location = new Point(this.horaLocal.Location.X+this.horaLocal.Size.Width+10, this.horaLocal.Location.Y-1);
             Controls.Add(this.decide);
-            this.decide.CheckedChanged += new EventHandler(activado_Decide);
+            this.decide.CheckedChanged += activado_Decide;
 
             //Boton cancelar
             this.decide2 = new RadioButton();
@@ -149,7 +144,9 @@ namespace Productos {
             this.decide2.Text = "No";
             this.decide2.Location = new Point(this.decide.Location.X+this.decide.Size.Width+10, this.decide.Location.Y);
             Controls.Add(this.decide2);
-            this.decide2.CheckedChanged += new EventHandler(activado_Decide);
+            this.decide2.CheckedChanged += activado_Decide;
+
+            desactiva_ActivaComponentes(false);
         }
     }
 }

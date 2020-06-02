@@ -51,20 +51,11 @@ namespace Productos {
         protected string _codigo;
         public string codigo {
             get => this._codigo;
-            set => this._codigo = String.Format("{0}-{1}", this.departamento, value.Replace(' ', '-'));
+            set => this._codigo = String.Format("{0}_{1}", this.departamento, value.Replace(' ', '-'));
         }
         public string descripcion { get; set; }
         protected List<PrecioFecha> precios;
-        protected double _likes;
-        public double likes { 
-            get=>this._likes;
-            set{
-                if (value <= 100)
-                    this._likes = value;
-                /*else
-                    throw new TooMuchCharactersException();*/
-            }
-        }
+        public double likes { get; set; }
         protected double _precio;
         public double precio {
             set => this._precio = value;
