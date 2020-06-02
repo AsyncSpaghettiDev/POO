@@ -33,7 +33,6 @@ namespace Productos {
         void error(object sender,TypeValidationEventArgs e) {
             if (!e.IsValidInput) {
                 new ToolTip().Show("El formato debe ser el sig dd/mm/yyyy.", this.fecha, 5000);
-                e.Cancel = true;
             }
         }
         void comprueba(object sender, CancelEventArgs e) {
