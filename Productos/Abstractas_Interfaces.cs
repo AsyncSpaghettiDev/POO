@@ -47,25 +47,49 @@ namespace Productos {
     /// Definicion de producto, no se puede instanciar.
     /// </summary>
     abstract class Producto :IHeader{
+        /// <summary>
+        /// Obtiene o establece al departamento que pertenece el producto
+        /// </summary>
         public string departamento { get; set; }
-        protected string _codigo;
-        public string codigo {
-            get => this._codigo;
-            set => this._codigo = String.Format("{0}_{1}", this.departamento, value.Replace(' ', '-'));
-        }
+        /// <summary>
+        /// Obtiene o establece el codigo el producto registrado
+        /// </summary>
+        public string codigo { get; set; }
+        /// <summary>
+        /// Obtiene o establece la descripcion del producto a registrado
+        /// </summary>
         public string descripcion { get; set; }
+        /// <summary>
+        /// Lista de precios cambiantes al tiempo
+        /// </summary>
         protected List<PrecioFecha> precios;
+        /// <summary>
+        /// Obtiene o establece la puntuacion dada del publico al producto
+        /// </summary>
         public double likes { get; set; }
         protected double _precio;
+        /// <summary>
+        /// Obtiene el precio en el momento actual, establece el precio de lanzamiento.
+        /// </summary>
         public double precio {
             set => this._precio = value;
-            
-            /*get {
-                return this.precios[0].precio;
-            }*/
+            get {
+                foreach (PrecioFecha precio in precios)
+                    if (precio.f_Fin > DateTime.Now)
+                        return precio.precio;
+                return 0;
+            }
         }
         /*Sobrecarga de constructor*/
         public Producto() { }
+        /// <summary>
+        /// Creacion de un producto generico
+        /// </summary>
+        /// <param name="departamento">Departamento al que pertence el producto</param>
+        /// <param name="codigo">Codigo del producto</param>
+        /// <param name="descripcion"></param>
+        /// <param name="likes"></param>
+        /// <param name="precioBase"></param>
         public Producto(string departamento, string codigo, string descripcion, double likes, double precioBase) {
             this.precios = new List<PrecioFecha>(3);
             this.departamento = departamento;
@@ -74,8 +98,8 @@ namespace Productos {
             this.likes = likes;
             this.precio = precioBase;
         }
-        public override string ToString() => String.Format("{0}|{1}|{2}|{3}\n|{4}", this.codigo, this.descripcion, this.likes, this.precios[0].precio, this.precios[0].f_Fin.ToString("dd-MM-yyyy:HH"));
-        string IHeader.txt_Header() => String.Format("Departamento|Codigo|Descripcion|Likes|Precio|Fecha_Registro");
+        public override string ToString() => String.Format("{0}|{1}|{2}|{3}", this.departamento,this.codigo, this.descripcion, this.likes,this.precios[0].f_Inicio,this.precios[0].precio);
+        string IHeader.txt_Header() => String.Format("Departamento|Codigo|Descripcion|Likes|FechaLanzamiento|PrecioLanzamiento|FechaMadurez|PrecioMadurez|FechaMerma|PrecioMerma");
         
     }
 }

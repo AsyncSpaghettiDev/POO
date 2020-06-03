@@ -20,6 +20,9 @@ namespace Productos {
         void gen_NP(object sender, EventArgs e) {
             
         }
+        /// <summary>
+        /// Cambia el textBox de fecha con la fecha actual en caso de desearlo así.
+        /// </summary>
         void activado_Decide(object sender, EventArgs e) {
             if (this.decide.Checked) {
                 this.fecha.Enabled = false;
@@ -30,11 +33,17 @@ namespace Productos {
                 this.fecha.Text = String.Empty;
             }
         }
+        /// <summary>
+        /// Valida que la fecha ingresada sea correcta.
+        /// </summary>
         void error(object sender,TypeValidationEventArgs e) {
             if (!e.IsValidInput) {
                 new ToolTip().Show("El formato debe ser el sig dd/mm/yyyy.", this.fecha, 5000);
             }
         }
+        /// <summary>
+        /// Metodo "generico" que valida cada campo de acorde a lo necesario.
+        /// </summary>
         void comprueba(object sender, CancelEventArgs e) {
             TextBoxBase caja = (sender as TextBoxBase);
             ToolTip mensaje= new ToolTip();
@@ -53,14 +62,20 @@ namespace Productos {
                     if (sender is RichTextBox)
                         caja.Text = caja.Text.Replace(' ', '_');
                 }
+                /*En caso que se presente un error en el formato se muestra un messageBox indicando el campo.*/
                 catch (FormatException) {
                     MessageBox.Show("Formato incorrecto en "+caja.Name);
                 }
+                /*En caso que se presente una excepcion se muestra una messageBox con el error para su correccion*/
                 catch (Exception ex) {
                     MessageBox.Show(ex.ToString());
                 }
             }
         }
+        /// <summary>
+        /// Proximamente: Al momento de dar enter se valida el departamento y en caso de no existir se atrapa la excepcion
+        /// Activa todos los campos de texto.
+        /// </summary>
         void cambiar(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab) {
                 this.departamento.Validating += comprueba;
