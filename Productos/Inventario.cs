@@ -5,6 +5,7 @@ namespace Productos {
         public Inventario() {
             initializeComponent();
             Funciones.Diseno(this,400,300,"Control de Inventarios","ILogo");
+            InventarioDB.Cargar_Listas(0);
         }
         /// <summary>
         /// Desactiva a activa todos los objetos como botones o cajas de texto.

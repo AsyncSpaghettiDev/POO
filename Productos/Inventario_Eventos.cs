@@ -7,11 +7,17 @@ namespace Productos {
         void gen_P(object sender, EventArgs e) {
             try {
                 var colm= this.fecha.Text.Split('/');
-                MessageBox.Show(new ProductoPerecedero(this.departamento.Text,this.code.Text,this.descripcion.Text,
-                    Convert.ToDouble(this.likes.Text), Convert.ToDouble(this.precio.Text),new DateTime(Convert.ToInt32(colm[2]), Convert.ToInt32(colm[1]), Convert.ToInt32(colm[0]) ) ).ToString());
+                var PE=new ProductoPerecedero(this.departamento.Text, this.code.Text, this.descripcion.Text,
+                    Convert.ToDouble(this.likes.Text), Convert.ToDouble(this.precio.Text),
+                    new DateTime(Convert.ToInt32(colm[2]), Convert.ToInt32(colm[1]), Convert.ToInt32(colm[0])));
+                MessageBox.Show(PE.ToString());
+                //MessageBox.Show(String.Format("{0}|{1}|{2}",PE.precios.f_Inicio , PE.precios.precio , PE.precios.f_Fin));
             }
             catch(FormatException) {
                 MessageBox.Show("Debes ingresar datos en todos los campos");
+            }
+            catch (ProductoSinVidaException pex) {
+                MessageBox.Show(pex.Message);
             }
             catch(Exception ex) {
                 MessageBox.Show(String.Format("{0}\n{1}", ex.Message, ex.StackTrace));
@@ -39,7 +45,9 @@ namespace Productos {
         void error(object sender,TypeValidationEventArgs e) {
             if (!e.IsValidInput) {
                 new ToolTip().Show("El formato debe ser el sig dd/mm/yyyy.", this.fecha, 5000);
+                e.Cancel = true;
             }
+                
         }
         /// <summary>
         /// Metodo "generico" que valida cada campo de acorde a lo necesario.
@@ -59,6 +67,9 @@ namespace Productos {
                         mensaje.Show("La cantidad máxima de likes es 100", sender as IWin32Window, 3000);
                         e.Cancel = true;
                     }
+                    if (caja.Name == this.code.Name) {
+                        //this.code.Text;
+                    }
                     if (sender is RichTextBox)
                         caja.Text = caja.Text.Replace(' ', '_');
                 }
@@ -77,9 +88,14 @@ namespace Productos {
         /// Activa todos los campos de texto.
         /// </summary>
         void cambiar(object sender, KeyEventArgs e) {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab) {
-                this.departamento.Validating += comprueba;
-                desactiva_ActivaComponentes(true);
+            try {
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab) {
+                    this.departamento.Validating += comprueba;
+                    desactiva_ActivaComponentes(true);
+                }
+            }
+            catch (InvalidDepartamentException IE) {
+                MessageBox.Show(IE.Message + "\n" + IE.HelpLink);
             }
         }
     }

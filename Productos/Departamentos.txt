@@ -1,32 +1,32 @@
-P-100-Frutas y verduras.
-P-200-Pescados y mariscos.
-P-300-Carnes
-P-400-Embutidos
-P-500-Panadería.
-P-600-Tortillería.
-P-700-Cremas y quesos.
-P-800-Lácteos.
-E-100-Computadoras
-E-200-Telefonia.
-E-300-Televisiones.
-E-400-Aire Acondicionado.
-E-500-ElectroDomesticos.
-E-600-Sistema de Audio.
-D-100-Salas de estar.
-D-200-Camas.
-D-300-Escritorios.
-D-400-Armarios.
-D-500-Comedores.
-D-600-Alacenas.
-M-100-Ropa de Caballero.
-M-200-Ropa de Dama.
-M-300-Ropa de Niños.
-M-400-Zapatos de Caballero.
-M-500-Zapatos de Dama.
-M-600-Zapatos de niño.
-M-700-Lenceria.
-M-800-Ropa deportiva.
-V-100-Jugueteria.
-V-200-Articulos Escolares.
-V-300-Revistas y libros.
-V-400-Farmacia.
+P-100|Frutas_y_verduras.
+P-200|Pescados_y_mariscos.
+P-300|Carnes.
+P-400|Embutidos
+P-500|Panadería.
+P-600|Tortillería.
+P-700|Cremas_y_quesos.
+P-800|Lácteos.
+E-100|Computadoras
+E-200|Telefonia.
+E-300|Televisiones.
+E-400|Aire_Acondicionado.
+E-500|ElectroDomesticos.
+E-600|Sistema_de_Audio.
+D-100|Salas_de_estar.
+D-200|Camas.
+D-300|Escritorios.
+D-400|Armarios.
+D-500|Comedores.
+D-600|Alacenas.
+M-100|Ropa_de_Caballero.
+M-200|Ropa_de_Dama.
+M-300|Ropa_de_Niños.
+M-400|Zapatos_de_Caballero.
+M-500|Zapatos_de_Dama.
+M-600|Zapatos_de_niño.
+M-700|Lenceria.
+M-800|Ropa_deportiva.
+V-100|Jugueteria.
+V-200|Articulos_Escolares.
+V-300|Revistas_y_libros.
+V-400|Farmacia.

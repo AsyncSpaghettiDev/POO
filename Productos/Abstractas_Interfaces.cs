@@ -50,7 +50,7 @@ namespace Productos {
         /// <summary>
         /// Obtiene o establece al departamento que pertenece el producto
         /// </summary>
-        public string departamento { get; set; }
+        public Departamento departamento { get; set; }
         /// <summary>
         /// Obtiene o establece el codigo el producto registrado
         /// </summary>
@@ -59,27 +59,24 @@ namespace Productos {
         /// Obtiene o establece la descripcion del producto a registrado
         /// </summary>
         public string descripcion { get; set; }
+        protected List<PrecioFecha> _precios;
         /// <summary>
         /// Lista de precios cambiantes al tiempo
         /// </summary>
-        protected List<PrecioFecha> precios;
+        public PrecioFecha precios {
+            set => this._precios.Add(value);
+            get {
+                foreach (PrecioFecha costo in this._precios)
+                    if (costo.f_Fin > DateTime.Now)
+                        return costo;
+                throw new ProductoSinVidaException();
+
+            }
+        }
         /// <summary>
         /// Obtiene o establece la puntuacion dada del publico al producto
         /// </summary>
         public double likes { get; set; }
-        protected double _precio;
-        /// <summary>
-        /// Obtiene el precio en el momento actual, establece el precio de lanzamiento.
-        /// </summary>
-        public double precio {
-            set => this._precio = value;
-            get {
-                foreach (PrecioFecha precio in precios)
-                    if (precio.f_Fin > DateTime.Now)
-                        return precio.precio;
-                return 0;
-            }
-        }
         /*Sobrecarga de constructor*/
         public Producto() { }
         /// <summary>
@@ -90,16 +87,18 @@ namespace Productos {
         /// <param name="descripcion"></param>
         /// <param name="likes"></param>
         /// <param name="precioBase"></param>
-        public Producto(string departamento, string codigo, string descripcion, double likes, double precioBase) {
-            this.precios = new List<PrecioFecha>(3);
-            this.departamento = departamento;
+        public Producto(string departamento, string codigo, string descripcion, double likes) {
+            this._precios = new List<PrecioFecha>();
+            this.departamento = new Departamento(departamento);
             this.codigo = codigo;
             this.descripcion = descripcion;
             this.likes = likes;
-            this.precio = precioBase;
         }
-        public override string ToString() => String.Format("{0}|{1}|{2}|{3}", this.departamento,this.codigo, this.descripcion, this.likes,this.precios[0].f_Inicio,this.precios[0].precio);
-        string IHeader.txt_Header() => String.Format("Departamento|Codigo|Descripcion|Likes|FechaLanzamiento|PrecioLanzamiento|FechaMadurez|PrecioMadurez|FechaMerma|PrecioMerma");
-        
+        public override string ToString() => String.Format("{0} | {1} | {2} | {3} | {4} | {5} | {6} | {7} | {8} | {9}", 
+            this.departamento,this.codigo, this.descripcion, this.likes,
+            this._precios[0].f_Inicio.ToString("dd/MM/yyyy"),this._precios[0].precio,
+            this._precios[1].f_Inicio.ToString("dd/MM/yyyy"), this._precios[1].precio,
+            this._precios[2].f_Inicio.ToString("dd/MM/yyyy"), this._precios[2].precio);
+        public string txt_Header() => String.Format("Departamento|Codigo|Descripcion|Likes|FechaLanzamiento|PrecioLanzamiento|FechaMadurez|PrecioMadurez|FechaMerma|PrecioMerma");
     }
 }

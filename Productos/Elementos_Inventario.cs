@@ -107,7 +107,7 @@ namespace Productos {
             this.fecha = new MaskedTextBox();
             this.fecha.Mask = "00/00/0000";
             this.fecha.BeepOnError = true;
-            this.fecha.Name = "la caja de Texto de Precio de Lanzamiento";
+            this.fecha.Name = "la caja de Texto de Fecha de Lanzamiento";
             this.fecha.Location = new Point(this._fecha.Location.X + 4, this._fecha.Location.Y + this._fecha.Size.Height + 10);
             Controls.Add(this.fecha);
             this.fecha.ValidatingType = typeof(DateTime);

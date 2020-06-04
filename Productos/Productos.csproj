@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractas_Interfaces.cs" />
+    <Compile Include="Departamento.cs" />
     <Compile Include="Elementos_Inventario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +56,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Funciones.cs" />
+    <Compile Include="InventarioDB.cs" />
     <Compile Include="Inventario_Eventos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,9 +69,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>recursos.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Inventario.resx">
-      <DependentUpon>Inventario.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

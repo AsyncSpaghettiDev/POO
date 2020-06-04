@@ -10,8 +10,8 @@ namespace Productos {
         /// </summary>
         /// <param name="f_Inicio">Fecha de inicio de tiempo límite</param>
         /// <param name="precio">Precio de arranque</param>
-        public PrecioFechaP(DateTime f_Inicio, double precio) : base(f_Inicio,precio) {
-            Aumenta(15);
+        public PrecioFechaP(DateTime f_Inicio, double precio,int dias) : base(f_Inicio,precio) {
+            Aumenta(dias);
         }
     }
     /// <summary>
@@ -23,8 +23,8 @@ namespace Productos {
         /// </summary>
         /// <param name="f_Inicio">Fecha de inicio de tiempo límite</param>
         /// <param name="precio">Precio de arranque</param>
-        public PrecioFechaNP(DateTime f_Inicio, double precio) : base(f_Inicio, precio) {
-            Aumenta(30);
+        public PrecioFechaNP(DateTime f_Inicio, double precio,int dias) : base(f_Inicio, precio) {
+            Aumenta(dias);
         }
     }
 }

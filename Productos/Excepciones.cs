@@ -1,8 +1,12 @@
 ﻿using System;
-using System.Windows.Forms;
 
 namespace Productos {
     class InvalidDepartamentException : Exception {
-        public InvalidDepartamentException() : base("Departamento Inválido revisa la tabla de Departamentos") { }
+        public InvalidDepartamentException() : base("Departamento Inválido revisa la tabla de Departamentos") {
+            this.HelpLink = "http://ito.mx/MBRr";
+        }
+    }
+    class ProductoSinVidaException : Exception {
+        public ProductoSinVidaException():base ("El producto se encuentra en estado de merma. ") { }
     }
 }
