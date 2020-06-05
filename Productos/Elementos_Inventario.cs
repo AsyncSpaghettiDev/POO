@@ -10,6 +10,9 @@ namespace Productos {
         Button agrega,actualiza;
         RadioButton decide,decide2;
         void initializeComponent() {
+            this.HelpButton = true;
+            HelpButtonClicked +=ayuda;
+
             //Etiqueta seleccion
             this.horaLocal = new Label();
             this.horaLocal.AutoSize = true;
@@ -32,7 +35,7 @@ namespace Productos {
             this.departamento.Size = new Size(50, this.departamento.Size.Height);
             this.departamento.Location = new Point(this._departamento.Location.X+4, this._departamento.Location.Y + this._departamento.Size.Height + 10);
             Controls.Add(this.departamento);
-            this.departamento.KeyDown += cambiar;
+            this.departamento.Validating += comprueba;
 
             //Label Codigo
             this._code = new Label();
@@ -49,7 +52,7 @@ namespace Productos {
             this.code.Size = new Size(50, this.code.Size.Height);
             this.code.Location = new Point(this._code.Location.X+4, this._code.Location.Y + this._code.Size.Height + 10);
             Controls.Add(this.code);
-            this.code.Validating += comprueba;
+            this.code.KeyPress += cambiar;
 
             //Label Likes
             this._likes = new Label();
@@ -118,7 +121,7 @@ namespace Productos {
             this.agrega.Text = "Agregar producto";
             this.agrega.Location = new Point(250, 100);
             this.agrega.AutoSize = true;
-            this.agrega.Click += new EventHandler(gen_NP);
+            this.agrega.Click += gen_P;
             Controls.Add(this.agrega);
 
             //Boton para actualizar los datos del producto
@@ -129,7 +132,7 @@ namespace Productos {
             this.actualiza.Click +=gen_P;
             Controls.Add(this.actualiza);
 
-            //Boton aceptar
+            //RadioBoton aceptar
             this.decide = new RadioButton();
             this.decide.AutoSize = true;
             this.decide.Text = "Si";
@@ -137,7 +140,7 @@ namespace Productos {
             Controls.Add(this.decide);
             this.decide.CheckedChanged += activado_Decide;
 
-            //Boton cancelar
+            //RadioBoton cancelar
             this.decide2 = new RadioButton();
             this.decide2.AutoSize = true;
             this.decide2.Checked = true;

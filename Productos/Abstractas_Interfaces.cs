@@ -59,6 +59,10 @@ namespace Productos {
         /// Obtiene o establece la descripcion del producto a registrado
         /// </summary>
         public string descripcion { get; set; }
+        /// <summary>
+        /// Obtiene o establece la puntuacion dada del publico al producto
+        /// </summary>
+        public double likes { get; set; }
         protected List<PrecioFecha> _precios;
         /// <summary>
         /// Lista de precios cambiantes al tiempo
@@ -70,13 +74,8 @@ namespace Productos {
                     if (costo.f_Fin > DateTime.Now)
                         return costo;
                 throw new ProductoSinVidaException();
-
             }
         }
-        /// <summary>
-        /// Obtiene o establece la puntuacion dada del publico al producto
-        /// </summary>
-        public double likes { get; set; }
         /*Sobrecarga de constructor*/
         public Producto() { }
         /// <summary>
@@ -94,11 +93,11 @@ namespace Productos {
             this.descripcion = descripcion;
             this.likes = likes;
         }
-        public override string ToString() => String.Format("{0} | {1} | {2} | {3} | {4} | {5} | {6} | {7} | {8} | {9}", 
+        public override string ToString() => String.Format("{0} | {1} | {2} | {3} | {4} | {5} | {6} | {7} | {8} | {9} | {10}", 
             this.departamento,this.codigo, this.descripcion, this.likes,
             this._precios[0].f_Inicio.ToString("dd/MM/yyyy"),this._precios[0].precio,
             this._precios[1].f_Inicio.ToString("dd/MM/yyyy"), this._precios[1].precio,
-            this._precios[2].f_Inicio.ToString("dd/MM/yyyy"), this._precios[2].precio);
-        public string txt_Header() => String.Format("Departamento|Codigo|Descripcion|Likes|FechaLanzamiento|PrecioLanzamiento|FechaMadurez|PrecioMadurez|FechaMerma|PrecioMerma");
+            this._precios[2].f_Inicio.ToString("dd/MM/yyyy"), this._precios[2].precio,this._precios[2].f_Fin.ToString("dd/MM/yyyy"));
+        public string txt_Header() => String.Format("CodigoDepartamento|Departamento|Codigo|Descripcion|Likes|FechaLanzamiento|PrecioLanzamiento|FechaMadurez|PrecioMadurez|FechaMerma|PrecioMerma|FechaMuerte");
     }
 }

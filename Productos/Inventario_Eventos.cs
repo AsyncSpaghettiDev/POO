@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Diagnostics;
 using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Productos {
     partial class Inventario {
+        void inicia_Interfaz(object sender, EventArgs e) {
+            initializeComponent();
+            InventarioDB.Cargar_Listas(0);
+            if (InventarioDB.departamentos.Count==0)
+                Application.Exit();
+        }
         void gen_P(object sender, EventArgs e) {
             try {
                 var colm= this.fecha.Text.Split('/');
@@ -11,7 +18,7 @@ namespace Productos {
                     Convert.ToDouble(this.likes.Text), Convert.ToDouble(this.precio.Text),
                     new DateTime(Convert.ToInt32(colm[2]), Convert.ToInt32(colm[1]), Convert.ToInt32(colm[0])));
                 MessageBox.Show(PE.ToString());
-                //MessageBox.Show(String.Format("{0}|{1}|{2}",PE.precios.f_Inicio , PE.precios.precio , PE.precios.f_Fin));
+                MessageBox.Show(String.Format("{0}|{1}|{2}",PE.precios.f_Inicio.ToString("dd/MM/yyyy"), PE.precios.precio, PE.precios.f_Fin.ToString("dd/MM/yyyy")));
             }
             catch(FormatException) {
                 MessageBox.Show("Debes ingresar datos en todos los campos");
@@ -67,8 +74,8 @@ namespace Productos {
                         mensaje.Show("La cantidad máxima de likes es 100", sender as IWin32Window, 3000);
                         e.Cancel = true;
                     }
-                    if (caja.Name == this.code.Name) {
-                        //this.code.Text;
+                    if (caja.Name == this.departamento.Name) {
+                        InventarioDB.Contains(caja.Text);
                     }
                     if (sender is RichTextBox)
                         caja.Text = caja.Text.Replace(' ', '_');
@@ -77,25 +84,35 @@ namespace Productos {
                 catch (FormatException) {
                     MessageBox.Show("Formato incorrecto en "+caja.Name);
                 }
+                catch (InvalidDepartamentException IE) {
+                    MessageBox.Show(IE.Message + "\n" + IE.HelpLink);
+                    e.Cancel = true;
+                }
                 /*En caso que se presente una excepcion se muestra una messageBox con el error para su correccion*/
                 catch (Exception ex) {
                     MessageBox.Show(ex.ToString());
                 }
             }
         }
+        void ayuda(object sender, CancelEventArgs e) {
+            Process.Start("http://ito.mx/MBRr");
+        }
         /// <summary>
         /// Proximamente: Al momento de dar enter se valida el departamento y en caso de no existir se atrapa la excepcion
         /// Activa todos los campos de texto.
         /// </summary>
-        void cambiar(object sender, KeyEventArgs e) {
-            try {
-                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab) {
-                    this.departamento.Validating += comprueba;
-                    desactiva_ActivaComponentes(true);
+        void cambiar(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == (char)Keys.Enter) {
+                Producto ped =InventarioDB.Contain(this.code.Text);
+                desactiva_ActivaComponentes(true);
+                if (ped != null) {
+                    this.likes.Text = ped.likes.ToString();
+                    this.descripcion.Text = ped.descripcion;
+                    this.agrega.Enabled = false;
                 }
-            }
-            catch (InvalidDepartamentException IE) {
-                MessageBox.Show(IE.Message + "\n" + IE.HelpLink);
+                else {
+                    this.actualiza.Enabled = false;
+                }
             }
         }
     }
