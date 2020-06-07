@@ -1,0 +1,11 @@
+CodigoDepartamento|Departamento|Codigo|Descripcion|Likes|FechaLanzamiento|PrecioLanzamiento|FechaMadurez|PrecioMadurez|FechaMerma|PrecioMerma|FechaMuerte
+P-300|Carnes.|ASS-550|texto_de_prueba_para_comer|95|01/06/2020|98.55|16/06/2020|88.695|01/07/2020|79.8255|31/07/2020
+P-300|Carnes.|ASS-550|texto_de_prueba|95|01/06/2020|98.55|16/06/2020|88.695|01/07/2020|79.8255|31/07/2020
+E-200|Telefonia.|TAD-250|tabla_de_picar_artesanal_para_todo_publico|83|16/12/2020|52.31|15/01/2021|52.31|15/01/2022|52.31|15/01/2024
+E-200|Telefonia.|TAR-200|iPhone_7_plus_con_desbloqueo_por_retina|91|01/01/2019|1250|31/01/2019|1250|31/01/2020|1250|30/01/2022
+P-600|Tortillería.|CDP-105|Cheleta_de_puerco_Rancho_del_Tio|52|05/06/2020|107.65|20/06/2020|96.885|05/07/2020|87.1965|04/08/2020
+P-700|Cremas_y_quesos.|CAR-250|Carne_para_asar_70/30_marca_del_rancho|55|06/06/2020|155.69|21/06/2020|140.121|06/07/2020|126.1089|05/08/2020
+P-200|Pescados_y_mariscos.|SPB-100|Salchiva_de_pavo_marca_bafar_500_gr|68|06/06/2020|120|21/06/2020|108|06/07/2020|97.2|05/08/2020
+V-200|Articulos_Escolares.|RAC-630|Salchiva_de_pavo_marca_bafar_500_gr|68|06/06/2020|120|06/07/2020|120|06/07/2021|120|06/07/2023
+M-200|Ropa_de_Dama.|PDW-110|Pantalon_de_Vestir_unisex_de_alta_callidad,_algodon_importado_70/30.|72|01/05/2020|191.55|31/05/2020|191.55|31/05/2021|191.55|31/05/2023
+P-300|Carnes.|SDJ-150|Sandwich_de_jamon_de_pavo|96|19/05/2020|56.25|03/06/2020|50.625|18/06/2020|45.5625|18/07/2020

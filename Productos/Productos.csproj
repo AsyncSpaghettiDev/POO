@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>isc.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractas_Interfaces.cs" />
+    <Compile Include="Consulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Departamento.cs" />
     <Compile Include="Elementos_Inventario.cs">
       <SubType>Form</SubType>
@@ -97,6 +103,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ILogo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CLogo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="isc.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

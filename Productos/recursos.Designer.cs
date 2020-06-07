@@ -63,9 +63,29 @@ namespace Productos {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
         /// </summary>
+        internal static System.Drawing.Icon CLogo {
+            get {
+                object obj = ResourceManager.GetObject("CLogo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
         internal static System.Drawing.Icon ILogo {
             get {
                 object obj = ResourceManager.GetObject("ILogo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        internal static System.Drawing.Icon isc {
+            get {
+                object obj = ResourceManager.GetObject("isc", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

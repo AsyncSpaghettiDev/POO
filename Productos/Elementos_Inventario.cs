@@ -121,7 +121,7 @@ namespace Productos {
             this.agrega.Text = "Agregar producto";
             this.agrega.Location = new Point(250, 100);
             this.agrega.AutoSize = true;
-            this.agrega.Click += gen_P;
+            this.agrega.Click += agregar;
             Controls.Add(this.agrega);
 
             //Boton para actualizar los datos del producto
@@ -129,7 +129,7 @@ namespace Productos {
             this.actualiza.Text = "Actualiza producto";
             this.actualiza.Location = new Point(this.agrega.Location.X, this.agrega.Location.Y + this.agrega.Size.Height + 20);
             this.actualiza.AutoSize = true;
-            this.actualiza.Click +=gen_P;
+            this.actualiza.Click +=actualizar;
             Controls.Add(this.actualiza);
 
             //RadioBoton aceptar

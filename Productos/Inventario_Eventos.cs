@@ -5,20 +5,33 @@ using System.Windows.Forms;
 
 namespace Productos {
     partial class Inventario {
+        Producto ped;
         void inicia_Interfaz(object sender, EventArgs e) {
             initializeComponent();
-            InventarioDB.Cargar_Listas(0);
+            InventarioDB.Listas(0,true);
+            InventarioDB.Listas(1, true);
             if (InventarioDB.departamentos.Count==0)
                 Application.Exit();
         }
-        void gen_P(object sender, EventArgs e) {
+        void agregar(object sender, EventArgs e) {
             try {
+                Producto Prod;
                 var colm= this.fecha.Text.Split('/');
-                var PE=new ProductoPerecedero(this.departamento.Text, this.code.Text, this.descripcion.Text,
+                if (this.departamento.Text.Contains("P")){
+                    Prod = new ProductoPerecedero(this.departamento.Text, this.code.Text, this.descripcion.Text,
                     Convert.ToDouble(this.likes.Text), Convert.ToDouble(this.precio.Text),
                     new DateTime(Convert.ToInt32(colm[2]), Convert.ToInt32(colm[1]), Convert.ToInt32(colm[0])));
-                MessageBox.Show(PE.ToString());
-                MessageBox.Show(String.Format("{0}|{1}|{2}",PE.precios.f_Inicio.ToString("dd/MM/yyyy"), PE.precios.precio, PE.precios.f_Fin.ToString("dd/MM/yyyy")));
+                }
+                else {
+                    Prod = new ProductoNoPerecedero(this.departamento.Text, this.code.Text, this.descripcion.Text,
+                    Convert.ToDouble(this.likes.Text), Convert.ToDouble(this.precio.Text),
+                    new DateTime(Convert.ToInt32(colm[2]), Convert.ToInt32(colm[1]), Convert.ToInt32(colm[0])));
+                }
+                InventarioDB.inventario.Add(Prod);
+                InventarioDB.Listas(1, false);
+                MessageBox.Show("Registro Exitoso");
+                desactiva_ActivaComponentes(false);
+                limpiar_Box();
             }
             catch(FormatException) {
                 MessageBox.Show("Debes ingresar datos en todos los campos");
@@ -30,8 +43,27 @@ namespace Productos {
                 MessageBox.Show(String.Format("{0}\n{1}", ex.Message, ex.StackTrace));
             }
         }
-        void gen_NP(object sender, EventArgs e) {
-            
+        void actualizar(object sender, EventArgs e) {
+            try {
+                this.ped.codigo = this.code.Text;
+                this.ped.likes = Convert.ToDouble(this.likes.Text);
+                this.ped.descripcion = this.descripcion.Text;
+                var colm= this.fecha.Text.Split('/');
+                this.ped.precios = new PrecioFechaNP(new DateTime(Convert.ToInt32(colm[2]), Convert.ToInt32(colm[1]), Convert.ToInt32(colm[0])), Convert.ToDouble(this.precio.Text));
+                InventarioDB.Listas(1, false);
+                MessageBox.Show("Actualizacion Exitoso");
+                desactiva_ActivaComponentes(false);
+                limpiar_Box();
+            }
+            catch (FormatException) {
+                MessageBox.Show("Debes ingresar datos en todos los campos");
+            }
+            catch (ProductoSinVidaException pex) {
+                MessageBox.Show(pex.Message);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(String.Format("{0}\n{1}", ex.Message, ex.StackTrace));
+            }
         }
         /// <summary>
         /// Cambia el textBox de fecha con la fecha actual en caso de desearlo así.
@@ -102,12 +134,14 @@ namespace Productos {
         /// Activa todos los campos de texto.
         /// </summary>
         void cambiar(object sender, KeyPressEventArgs e) {
-            if (e.KeyChar == (char)Keys.Enter) {
-                Producto ped =InventarioDB.Contain(this.code.Text);
+            if (e.KeyChar == (char)Keys.Enter&&this.descripcion.Enabled==false) {
+                this.ped = InventarioDB.Contain(this.code.Text,this.departamento.Text);
                 desactiva_ActivaComponentes(true);
-                if (ped != null) {
-                    this.likes.Text = ped.likes.ToString();
-                    this.descripcion.Text = ped.descripcion;
+                if (this.ped != null) {
+                    this.likes.Text = this.ped.likes.ToString();
+                    this.descripcion.Text = this.ped.descripcion;
+                    this.precio.Text = this.ped.precioLanzado.precio.ToString();
+                    this.fecha.Text = this.ped.precioLanzado.f_Inicio.ToString("ddMMyyyy");
                     this.agrega.Enabled = false;
                 }
                 else {

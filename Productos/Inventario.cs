@@ -11,11 +11,17 @@ namespace Productos {
         /// </summary>
         /// <param name="decision">Activar o desactivar los controles</param>
         void desactiva_ActivaComponentes(bool decision) {
-            foreach (Control ctr in Controls)
-                if (ctr is Label || ctr.Name == this.departamento.Name||ctr.Name==this.code.Name)
+            foreach (Control ctr in Controls) 
+                if (ctr is Label || ctr.Name == this.departamento.Name || ctr.Name == this.code.Name)
                     ctr.Enabled = true;
-                else
+                else {
                     ctr.Enabled = decision;
+                }
+            
+        }
+        void limpiar_Box() {
+            foreach (TextBoxBase bx in Controls)
+                bx.Text = "";
         }
     }
 }

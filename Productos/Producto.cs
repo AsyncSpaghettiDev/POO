@@ -17,9 +17,7 @@ namespace Productos {
         public ProductoPerecedero(string departamento, string codigo, string descripcion, double likes, double precioBase, DateTime tiempo) :
             base(departamento,codigo,descripcion,likes) {
 
-            this.precios= new PrecioFechaP(tiempo, precioBase,15);
-            for (int i = 1; i < 3; i++)
-                this.precios = new PrecioFechaP(this._precios[i - 1].f_Fin, this._precios[i - 1].precio * 0.85,i*15);
+            this.precios= new PrecioFechaP(tiempo, precioBase);
         }
     }
     /// <summary>
@@ -39,9 +37,7 @@ namespace Productos {
         public ProductoNoPerecedero(string departamento, string codigo, string descripcion, double likes, double precioBase, DateTime tiempo) :
             base(departamento, codigo, descripcion, likes) {
 
-            this.precios=new PrecioFechaNP(tiempo, precioBase,30);
-            for (int i = 1; i < 3; i++)
-                this.precios = new PrecioFechaNP(this._precios[i - 1].f_Fin, this._precios[i - 1].precio*0.90, i * 30);
+            this.precios = new PrecioFechaNP(tiempo, precioBase);
         }
         
     }

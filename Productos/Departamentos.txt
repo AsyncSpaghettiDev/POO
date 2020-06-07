@@ -1,3 +1,4 @@
+CodigoDepartamento|Departamento.
 P-100|Frutas_y_verduras.
 P-200|Pescados_y_mariscos.
 P-300|Carnes.

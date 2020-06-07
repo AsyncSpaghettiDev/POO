@@ -31,6 +31,7 @@ namespace Productos {
         /// Obtiene o establece el costo del producto.
         /// </summary>
         public double precio { get; set; } 
+        public PrecioFecha() { }
         public PrecioFecha(DateTime f_Inicio, double precio) {
             this.f_Inicio = f_Inicio;
             this.precio = precio;
@@ -68,13 +69,29 @@ namespace Productos {
         /// Lista de precios cambiantes al tiempo
         /// </summary>
         public PrecioFecha precios {
-            set => this._precios.Add(value);
-            get {
-                foreach (PrecioFecha costo in this._precios)
-                    if (costo.f_Fin > DateTime.Now)
-                        return costo;
-                throw new ProductoSinVidaException();
+            set {
+                this._precios.Add(value);
+                if (value is PrecioFechaP)
+                    for (int i = 1 ; i < 3 ; i++)
+                        this._precios.Add(new PrecioFechaNP(this._precios[i - 1].f_Fin, this._precios[i - 1].precio * 0.90, i * 15));
+                else if (value is PrecioFechaNP)
+                    for (int i = 1 ; i < 3 ; i++)
+                        this._precios.Add(new PrecioFechaP(this._precios[i - 1].f_Fin, this._precios[i - 1].precio , i *365 ));
             }
+            get {
+                if( this._precios.Equals(new PrecioFechaNP() ) ) {
+                    foreach (PrecioFecha costo in this._precios)
+                        if (costo.f_Fin > DateTime.Now)
+                            return costo;
+                    throw new ProductoSinVidaException();
+                }
+                else {
+                    throw new ProductoNoPerecederoException();
+                }
+            }
+        }
+        public PrecioFecha precioLanzado {
+            get => this._precios[0];
         }
         /*Sobrecarga de constructor*/
         public Producto() { }
@@ -93,7 +110,7 @@ namespace Productos {
             this.descripcion = descripcion;
             this.likes = likes;
         }
-        public override string ToString() => String.Format("{0} | {1} | {2} | {3} | {4} | {5} | {6} | {7} | {8} | {9} | {10}", 
+        public override string ToString() => String.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}", 
             this.departamento,this.codigo, this.descripcion, this.likes,
             this._precios[0].f_Inicio.ToString("dd/MM/yyyy"),this._precios[0].precio,
             this._precios[1].f_Inicio.ToString("dd/MM/yyyy"), this._precios[1].precio,

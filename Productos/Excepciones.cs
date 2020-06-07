@@ -9,4 +9,7 @@ namespace Productos {
     class ProductoSinVidaException : Exception {
         public ProductoSinVidaException():base ("El producto se encuentra en estado de merma. ") { }
     }
+    class ProductoNoPerecederoException : Exception {
+        public ProductoNoPerecederoException() : base("El producto no tiene fecha definida de muerte.") { }
+    }
 }
