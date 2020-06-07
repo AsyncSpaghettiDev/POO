@@ -10,7 +10,7 @@ namespace Productos {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Consulta());
+            Application.Run(new Inventario());
         }
     }
 }

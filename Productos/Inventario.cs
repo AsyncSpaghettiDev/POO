@@ -20,8 +20,9 @@ namespace Productos {
             
         }
         void limpiar_Box() {
-            foreach (TextBoxBase bx in Controls)
-                bx.Text = "";
+            foreach (Control bx in Controls)
+                if(bx is TextBoxBase)
+                    (bx as TextBoxBase).Clear();
         }
     }
 }

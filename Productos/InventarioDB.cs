@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Web;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Productos {
@@ -12,10 +12,12 @@ namespace Productos {
             string path=null;
             switch (lista) {
                 case 0:
-                    path = "../../Departamentos.txt";
+                    if(!File.Exists("./Departamentos.txt") )
+                        File.WriteAllText("./Departamentos.txt", Properties.Resources.Departamentos);
+                    path = "./Departamentos.txt";
                     break;
                 case 1:
-                    path = "../../Inventario.txt";
+                    path = "./Inventario.txt";
                     break;
             }
             if(CG)
@@ -46,7 +48,6 @@ namespace Productos {
             StreamReader textIn=null;
             try {
                 string [] campos;
-
                 textIn = new StreamReader(new FileStream(
                     path,
                     FileMode.Open, FileAccess.Read));

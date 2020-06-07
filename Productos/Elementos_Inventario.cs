@@ -108,6 +108,7 @@ namespace Productos {
 
             //Texbox Fecha
             this.fecha = new MaskedTextBox();
+            this.fecha.Size = new Size(65, this.fecha.Size.Height);
             this.fecha.Mask = "00/00/0000";
             this.fecha.BeepOnError = true;
             this.fecha.Name = "la caja de Texto de Fecha de Lanzamiento";

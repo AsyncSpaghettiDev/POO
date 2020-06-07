@@ -18,7 +18,7 @@ public class Funciones {
         /// <param name="nombre">Ingresa el nombre del icono de la ventana, nota: agregar en archivo recursos</param>
     public static void Diseno(Form Lienzo,int x,int y,String Titulo,String nombre) {
         Lienzo.Size = new Size(x, y);
-        ComponentResourceManager imgs = new ComponentResourceManager(typeof(Productos.recursos));
+        ComponentResourceManager imgs = new ComponentResourceManager(typeof(Productos.Properties.Resources));
         Lienzo.Icon = imgs.GetObject(nombre) as Icon;
         Lienzo.Text = Titulo;
 
