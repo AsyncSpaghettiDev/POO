@@ -87,7 +87,7 @@ namespace Productos.Properties {
         ///P-300|Carnes.
         ///P-400|Embutidos
         ///P-500|Panaderia.
-        ///P-600|TortillerÃ­a.
+        ///P-600|Tortilleria.
         ///P-700|Cremas_y_quesos.
         ///P-800|Lacteos.
         ///E-100|Computadoras
@@ -104,7 +104,7 @@ namespace Productos.Properties {
         ///D-600|Alacenas.
         ///M-100|Ropa_de_Caballero.
         ///M-200|Ropa_de_Dama.
-        ///M-300|Ropa_de_ [resto de la cadena truncado]&quot;;.
+        ///M-300|Ropa_de_N [resto de la cadena truncado]&quot;;.
         /// </summary>
         public static string Departamentos {
             get {
@@ -128,6 +128,16 @@ namespace Productos.Properties {
         public static System.Drawing.Icon ILogo {
             get {
                 object obj = ResourceManager.GetObject("ILogo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        public static System.Drawing.Icon Prod {
+            get {
+                object obj = ResourceManager.GetObject("Prod", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

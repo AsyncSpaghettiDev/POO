@@ -5,7 +5,7 @@ using System.Windows.Forms;
 namespace Productos {
     partial class Pantalla_Inicial:Form {
         public Pantalla_Inicial() {
-            Funciones.Diseno(this, 600, 400, "Control de Inventarios 2.1.5", "FLogo");
+            Funciones.Diseno(this, 600, 400, "Control de Inventarios 2.2.0", "FLogo");
             iniciaComponentes();
             cargaList();
         }

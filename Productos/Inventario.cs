@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Productos {
     partial class Inventario : Form {
-        String path;
+        readonly String path;
         public Inventario(String path) {
             Funciones.Diseno(this,400,300,"Control de Inventarios","ILogo");
             Load += inicia_Interfaz;

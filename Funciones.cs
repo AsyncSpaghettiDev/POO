@@ -29,5 +29,5 @@ public class Funciones {
         Lienzo.StartPosition = FormStartPosition.CenterScreen;
         Lienzo.FormClosed += new FormClosedEventHandler(Cerrar);
     }
-    public static void Cerrar(object sender, EventArgs e) => Application.Exit();
+    static void Cerrar(object sender, EventArgs e) => Application.Exit();
 }

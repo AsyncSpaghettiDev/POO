@@ -10,13 +10,13 @@ namespace Productos {
         Button buscar,menu;
         void iniciaComponentes() {
             //Diseño de la ventana
-            Funciones.Diseno(this, 370, 360, "Consulta de Inventario", "CLogo");
+            Funciones.Diseno(this, 420, 360, "Consulta de Inventario", "CLogo");
 
             //Seleccionar busqueda por fecha
             this.S_Fecha = new RadioButton();
             this.S_Fecha.Text = "Busqueda por\nFecha";
             this.S_Fecha.AutoSize = true;
-            this.S_Fecha.Location = new Point(20, 10);
+            this.S_Fecha.Location = new Point(30, 10);
             Controls.Add(this.S_Fecha);
 
             //Buscar por fecha
@@ -33,7 +33,7 @@ namespace Productos {
             this.S_Departamento = new RadioButton();
             this.S_Departamento.Text = "Busqueda por\nDepartamento";
             this.S_Departamento.AutoSize = true;
-            this.S_Departamento.Location = new Point(this.S_Fecha.Location.X + this.S_Fecha.Size.Width + 10, this.S_Fecha.Location.Y);
+            this.S_Departamento.Location = new Point(this.S_Fecha.Location.X + this.S_Fecha.Size.Width + 31, this.S_Fecha.Location.Y);
             Controls.Add(this.S_Departamento);
 
             //Buscar por Departamento
@@ -48,7 +48,7 @@ namespace Productos {
             this.S_Code = new RadioButton();
             this.S_Code.Text = "Busqueda por\nCódigo";
             this.S_Code.AutoSize = true;
-            this.S_Code.Location = new Point(this.S_Departamento.Location.X + this.S_Departamento.Size.Width + 10, this.S_Departamento.Location.Y);
+            this.S_Code.Location = new Point(this.S_Departamento.Location.X + this.S_Departamento.Size.Width + 31, this.S_Departamento.Location.Y);
             Controls.Add(this.S_Code);
 
             //Buscar por Code

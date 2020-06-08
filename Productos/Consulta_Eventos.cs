@@ -16,6 +16,7 @@ namespace Productos {
             switch (casilla) {
                 case 0:
                     this.B_Fecha.Enabled = true;
+                    this.B_Fecha.Focus();
                     this.B_Departamento.Enabled = false;
                     this.B_Departamento.Clear();
                     this.B_Code.Enabled = false;
@@ -25,6 +26,8 @@ namespace Productos {
                     this.B_Fecha.Enabled = false;
                     this.B_Fecha.Clear();
                     this.B_Departamento.Enabled = true;
+                    this.B_Departamento.Focus();
+                    this.B_Code.Enabled = false;
                     this.B_Code.Clear();
                     break;
                 case 2:
@@ -33,6 +36,7 @@ namespace Productos {
                     this.B_Departamento.Enabled = false;
                     this.B_Departamento.Clear();
                     this.B_Code.Enabled = true;
+                    this.B_Code.Focus();
                     break;
             }
         }
@@ -55,8 +59,9 @@ namespace Productos {
                 if (this.S_Code.Checked)
                     InventarioDB.Consulta(this.B_Code.Text, out resul);
 
-                foreach (Producto prod in resul)
-                    this.resultado.Items.Add(prod);
+                this.resultado.Click += mostrar;
+                foreach (Producto prod in resul) 
+                    this.resultado.Items.Add(prod.ToString().Replace('_',' '));
             }
             catch (NullReferenceException) {
                 MessageBox.Show("Ingresa datos en por lo menos un campo");
@@ -74,6 +79,15 @@ namespace Productos {
         void regreso(object sender, EventArgs e) {
             Hide();
             new Pantalla_Inicial().Show();
+        }
+        void mostrar(object sender, EventArgs e) {
+            try {
+                new ProductBox(this.resultado.SelectedItem.ToString()).Show();
+                this.resultado.SelectedItem = null;
+            }
+            catch (NullReferenceException) {
+                this.resultado.SelectedItem = 1;
+            }
         }
     }
 }
