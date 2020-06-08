@@ -7,7 +7,7 @@ namespace Productos {
         Label horaLocal,_departamento,_code,_descripcion,_likes,_precio,_fecha;
         MaskedTextBox departamento,code,fecha;
         TextBoxBase likes,precio,descripcion;
-        Button agrega,actualiza;
+        Button agrega,actualiza,men;
         RadioButton decide,decide2;
         void initializeComponent() {
             this.HelpButton = true;
@@ -120,7 +120,7 @@ namespace Productos {
             //Boton para agregar un nuevo producto
             this.agrega = new Button();
             this.agrega.Text = "Agregar producto";
-            this.agrega.Location = new Point(250, 100);
+            this.agrega.Location = new Point(250, 80);
             this.agrega.AutoSize = true;
             this.agrega.Click += agregar;
             Controls.Add(this.agrega);
@@ -132,6 +132,16 @@ namespace Productos {
             this.actualiza.AutoSize = true;
             this.actualiza.Click +=actualizar;
             Controls.Add(this.actualiza);
+
+            //Boton vuelta al menú principal
+            this.men = new Button();
+            this.men.Text = "Volver al\nmenu principal.";
+            this.men.Name = this.men.Text;
+            this.men.Location = new Point(this.actualiza.Location.X, this.actualiza.Location.Y + this.actualiza.Height + 20);
+            this.men.AutoSize = true;
+            this.men.Width = this.actualiza.Width;
+            this.men.Click += regresa;
+            Controls.Add(this.men);
 
             //RadioBoton aceptar
             this.decide = new RadioButton();

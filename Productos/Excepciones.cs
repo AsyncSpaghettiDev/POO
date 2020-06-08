@@ -12,4 +12,7 @@ namespace Productos {
     class ProductoNoPerecederoException : Exception {
         public ProductoNoPerecederoException() : base("El producto no tiene fecha definida de muerte.") { }
     }
+    class ResultadoNuloException: Exception {
+        public ResultadoNuloException() : base("Busqueda sin resultados, intenta ingresando otros datos") { }
+    }
 }

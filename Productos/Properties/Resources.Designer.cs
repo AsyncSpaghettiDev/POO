@@ -71,11 +71,54 @@ namespace Productos.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a .
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Consul {
+            get {
+                object obj = ResourceManager.GetObject("Consul", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Serie_Departamento|Nombre_Departamento
+        ///P-100|Frutas_y_verduras.
+        ///P-200|Pescados_y_mariscos.
+        ///P-300|Carnes.
+        ///P-400|Embutidos
+        ///P-500|Panaderia.
+        ///P-600|TortillerÃ­a.
+        ///P-700|Cremas_y_quesos.
+        ///P-800|Lacteos.
+        ///E-100|Computadoras
+        ///E-200|Telefonia.
+        ///E-300|Televisiones.
+        ///E-400|Aire_Acondicionado.
+        ///E-500|ElectroDomesticos.
+        ///E-600|Sistema_de_Audio.
+        ///D-100|Salas_de_estar.
+        ///D-200|Camas.
+        ///D-300|Escritorios.
+        ///D-400|Armarios.
+        ///D-500|Comedores.
+        ///D-600|Alacenas.
+        ///M-100|Ropa_de_Caballero.
+        ///M-200|Ropa_de_Dama.
+        ///M-300|Ropa_de_ [resto de la cadena truncado]&quot;;.
         /// </summary>
         public static string Departamentos {
             get {
                 return ResourceManager.GetString("Departamentos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
+        /// </summary>
+        public static System.Drawing.Icon FLogo {
+            get {
+                object obj = ResourceManager.GetObject("FLogo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -90,24 +133,12 @@ namespace Productos.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CodigoDepartamento|Departamento|Codigo|Descripcion|Likes|FechaLanzamiento|PrecioLanzamiento|FechaMadurez|PrecioMadurez|FechaMerma|PrecioMerma|FechaMuerte
-        ///P-300|Carnes.|ASS-550|texto_de_prueba_para_comer|95|01/06/2020|98.55|16/06/2020|88.695|01/07/2020|79.8255|31/07/2020
-        ///P-300|Carnes.|ASS-550|texto_de_prueba|95|01/06/2020|98.55|16/06/2020|88.695|01/07/2020|79.8255|31/07/2020
-        ///E-200|Telefonia.|TAD-250|tabla_de_picar_artesanal_para_todo_publico|83|16/12/2020|52.31|15/01/2021|52.31|15/01/2022|52.31|15/01/2024 [resto de la cadena truncado]&quot;;.
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        public static string Inventario {
+        public static System.Drawing.Bitmap Regi {
             get {
-                return ResourceManager.GetString("Inventario", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
-        /// </summary>
-        public static System.Drawing.Icon isc {
-            get {
-                object obj = ResourceManager.GetObject("isc", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                object obj = ResourceManager.GetObject("Regi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +50,29 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\isc.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>14FB561AC6517EDCB8F7B53ED7BF39D6151A4182</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,8 +91,14 @@
     <Compile Include="Consulta.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Consulta_Elementos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consulta_Eventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Departamento.cs" />
-    <Compile Include="Elementos_Inventario.cs">
+    <Compile Include="Inventario_Elementos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Excepciones.cs" />
@@ -64,6 +108,15 @@
     <Compile Include="Funciones.cs" />
     <Compile Include="InventarioDB.cs" />
     <Compile Include="Inventario_Eventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantalla_Elementos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantalla_Eventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantalla_Inicial.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Precios.cs" />
@@ -100,9 +153,6 @@
     <None Include="Resources\CLogo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="isc.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\isc.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -112,10 +162,25 @@
     <None Include="bin\Debug\Inventario.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\consultas.ico" />
+    <None Include="Departamentos.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Departamentos.txt" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inv.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\consul.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

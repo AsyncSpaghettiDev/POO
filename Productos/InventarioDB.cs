@@ -1,40 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Productos {
     class InventarioDB {
         public static List<Departamento> departamentos = new List<Departamento>();
         public static List<Producto> inventario = new List<Producto>();
-        public static void Listas(int lista,bool CG) {
-            string path=null;
-            switch (lista) {
-                case 0:
-                    if(!File.Exists("./Departamentos.txt") )
-                        File.WriteAllText("./Departamentos.txt", Properties.Resources.Departamentos);
-                    path = "./Departamentos.txt";
-                    break;
-                case 1:
-                    path = "./Inventario.txt";
-                    break;
-            }
-            if(CG)
-                cargar_Listas(path, lista);
-            else
-                guardar_Listas(path, lista);
-        }
-        static void guardar_Listas(string path,int lista) {
+        public static void Guardar_Listas(string path) {
             StreamWriter textOut=null;
             try {
                 textOut = new StreamWriter(new FileStream(path, FileMode.Create, FileAccess.Write));
                 textOut.WriteLine(new ProductoPerecedero().txt_Header());
                 foreach (Producto cat in inventario)
                     textOut.WriteLine(cat.ToString());
-            }
-            catch (FileNotFoundException) {
-                deployFD(lista);
             }
             catch (Exception e) {
                 MessageBox.Show(e.ToString());
@@ -44,7 +23,7 @@ namespace Productos {
                     textOut.Close();
             }
         }
-        static void cargar_Listas(string path, int lista) {
+        public static void Cargar_Listas(string path, int lista) {
             StreamReader textIn=null;
             try {
                 string [] campos;
@@ -52,7 +31,6 @@ namespace Productos {
                     path,
                     FileMode.Open, FileAccess.Read));
                 textIn.ReadLine();
-                
                 while (textIn.Peek() != -1) {
                     campos = textIn.ReadLine().Split('|');
                     switch (lista) {
@@ -70,7 +48,7 @@ namespace Productos {
                 }
             }
             catch (FileNotFoundException) {
-                deployFD(lista);
+                DeployFD(lista);
             }
             catch (Exception e) {
                 MessageBox.Show(e.ToString());
@@ -82,8 +60,7 @@ namespace Productos {
         }
         public static bool Contains (string code) {
             foreach (Departamento dep in departamentos)
-                if (dep.serie == code)
-                    return true;
+                    return dep.serie == code;
             throw new InvalidDepartamentException();
         }
         public static Producto Contain (string code,string depa) {
@@ -93,15 +70,44 @@ namespace Productos {
                 }
             return null;
         }
-        static void deployFD(int lista) {
+        public static void DeployFD(int lista) {
             OpenFileDialog ventanaSelect = new OpenFileDialog();
-
+            string path;
+            ventanaSelect.Title = "Carga archivo con Inventario";
             ventanaSelect.InitialDirectory = @"%userprofile%\Desktop";
             ventanaSelect.Filter = "Database files (*.txt)|*.txt";
             ventanaSelect.FilterIndex = 0;
 
+            if (lista == 0)
+                path = "./Departamentos.txt";
+            else
+                path = "./Inventario.txt";
+
             if (ventanaSelect.ShowDialog() == DialogResult.OK)
-                cargar_Listas(ventanaSelect.FileName, lista);
+                File.WriteAllText(path, File.ReadAllText(ventanaSelect.FileName));
+
+            Cargar_Listas(path, lista);
         }
+        public static void Consulta(DateTime B_Fec, out List<Producto> respu) {
+            respu = new List<Producto>();
+
+            foreach (Producto prod in inventario) 
+                if (B_Fec == prod.precioLanzado.f_Inicio)
+                    respu.Add(prod);
+            
+            if (respu.Count < 1)
+                throw new ResultadoNuloException();
+        }
+        public static void Consulta(String Busqueda, out List<Producto> respu) {
+            respu = new List<Producto>();
+
+            foreach (Producto prod in inventario) 
+                if (Busqueda == prod.departamento.serie || Busqueda == prod.codigo)
+                    respu.Add(prod);
+            
+            if (respu.Count < 1)
+                throw new ResultadoNuloException();
+        }
+
     }
 }

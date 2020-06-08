@@ -8,10 +8,6 @@ namespace Productos {
         Producto ped;
         void inicia_Interfaz(object sender, EventArgs e) {
             initializeComponent();
-            InventarioDB.Listas(0,true);
-            InventarioDB.Listas(1, true);
-            if (InventarioDB.departamentos.Count==0)
-                Application.Exit();
         }
         void agregar(object sender, EventArgs e) {
             try {
@@ -28,7 +24,7 @@ namespace Productos {
                     new DateTime(Convert.ToInt32(colm[2]), Convert.ToInt32(colm[1]), Convert.ToInt32(colm[0])));
                 }
                 InventarioDB.inventario.Add(Prod);
-                InventarioDB.Listas(1, false);
+                InventarioDB.Guardar_Listas(this.path);
                 MessageBox.Show("Registro Exitoso");
                 desactiva_ActivaComponentes(false);
                 limpiar_Box();
@@ -49,8 +45,11 @@ namespace Productos {
                 this.ped.likes = Convert.ToDouble(this.likes.Text);
                 this.ped.descripcion = this.descripcion.Text;
                 var colm= this.fecha.Text.Split('/');
-                this.ped.precios = new PrecioFechaNP(new DateTime(Convert.ToInt32(colm[2]), Convert.ToInt32(colm[1]), Convert.ToInt32(colm[0])), Convert.ToDouble(this.precio.Text));
-                InventarioDB.Listas(1, false);
+                if(this.departamento.Text.Contains("P"))
+                    this.ped.precios = new PrecioFechaP(new DateTime(Convert.ToInt32(colm[2]), Convert.ToInt32(colm[1]), Convert.ToInt32(colm[0])), Convert.ToDouble(this.precio.Text));
+                else
+                    this.ped.precios = new PrecioFechaNP(new DateTime(Convert.ToInt32(colm[2]), Convert.ToInt32(colm[1]), Convert.ToInt32(colm[0])), Convert.ToDouble(this.precio.Text));
+                InventarioDB.Guardar_Listas(this.path);
                 MessageBox.Show("Actualizacion Exitoso");
                 desactiva_ActivaComponentes(false);
                 limpiar_Box();
@@ -85,8 +84,7 @@ namespace Productos {
             if (!e.IsValidInput) {
                 new ToolTip().Show("El formato debe ser el sig dd/mm/yyyy.", this.fecha, 5000);
                 e.Cancel = true;
-            }
-                
+            }     
         }
         /// <summary>
         /// Metodo "generico" que valida cada campo de acorde a lo necesario.
@@ -148,6 +146,10 @@ namespace Productos {
                     this.actualiza.Enabled = false;
                 }
             }
+        }
+        void regresa(object sender,EventArgs e) {
+            Hide();
+            new Pantalla_Inicial().Show();
         }
     }
 }

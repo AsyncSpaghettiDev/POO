@@ -4,7 +4,7 @@ P-200|Pescados_y_mariscos.
 P-300|Carnes.
 P-400|Embutidos
 P-500|Panaderia.
-P-600|Tortillería.
+P-600|Tortilleria.
 P-700|Cremas_y_quesos.
 P-800|Lacteos.
 E-100|Computadoras

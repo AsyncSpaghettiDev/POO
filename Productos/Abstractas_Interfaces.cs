@@ -70,6 +70,7 @@ namespace Productos {
         /// </summary>
         public PrecioFecha precios {
             set {
+                this._precios.Clear();
                 this._precios.Add(value);
                 if (value is PrecioFechaP)
                     for (int i = 1 ; i < 3 ; i++)
