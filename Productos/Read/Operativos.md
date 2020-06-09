@@ -5,4 +5,4 @@ Todos aquellos módulos usados para el correcto Funcionamiento del programa
 [Módulo excepciones](../Excepciones.cs) Definición de posibles errores ante diversas situaciones.  
 [Módulo Precios](../Precios.cs) Dos tipos de precios dependiendo del producto que se registre.  
 [Módulo Producto](../Producto.cs) Definición de un producto perecedero o uno no perecedero.  
-[Módulo Abstracto-Interfaz](../Abstractas_Interfaces.cs) Estructura interna de otros módulos.
+[Módulo Abstracto-Interfaz](../Abstractas.cs) Estructura interna de otros módulos.
