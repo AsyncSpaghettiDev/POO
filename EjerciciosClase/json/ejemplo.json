@@ -1,0 +1,17 @@
+[
+    {
+        "code": 15,
+        "product": "Cereal_chocolatado",
+        "price": 28.5
+    },
+    {
+        "code": 125,
+        "product": "Galletas_varias",
+        "price": 35
+    },
+    {
+        "code": 325,
+        "product": "Bombones",
+        "price": 21
+    }
+]
