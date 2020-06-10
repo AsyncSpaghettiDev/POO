@@ -4,10 +4,25 @@ using System.Windows.Forms;
 
 namespace Productos {
     partial class Inventario {
+        /// <summary>
+        /// Etiquetas de la ventana
+        /// </summary>
         Label horaLocal,_departamento,_code,_descripcion,_likes,_precio,_fecha;
+        /// <summary>
+        /// TextBox con validación.
+        /// </summary>
         MaskedTextBox departamento,code,fecha;
+        /// <summary>
+        /// TextBox sin validación explicita.
+        /// </summary>
         TextBoxBase likes,precio,descripcion;
+        /// <summary>
+        /// Botón de acción.
+        /// </summary>
         Button agrega,actualiza,men;
+        /// <summary>
+        /// Botón para seleccionar o no la hora local.
+        /// </summary>
         RadioButton decide,decide2;
         void initializeComponent() {
             this.HelpButton = true;
@@ -35,7 +50,6 @@ namespace Productos {
             this.departamento.Size = new Size(50, this.departamento.Size.Height);
             this.departamento.Location = new Point(this._departamento.Location.X+4, this._departamento.Location.Y + this._departamento.Size.Height + 10);
             Controls.Add(this.departamento);
-            this.departamento.Validating += comprueba;
 
             //Label Codigo
             this._code = new Label();
@@ -67,7 +81,6 @@ namespace Productos {
             this.likes.Size = this.departamento.Size;
             this.likes.Location = new Point(this._likes.Location.X+4, this._likes.Location.Y + this._likes.Size.Height + 10);
             Controls.Add(this.likes);
-            this.likes.Validating += comprueba;
 
             //Label Descripcion
             this._descripcion = new Label();
@@ -82,7 +95,6 @@ namespace Productos {
             this.descripcion.Size = new Size(this._likes.Location.X + this._likes.Size.Width - this.departamento.Location.X,this.descripcion.Size.Height/2);
             this.descripcion.Location = new Point(this._descripcion.Location.X, this._descripcion.Location.Y + this._descripcion.Size.Height + 10);
             Controls.Add(this.descripcion);
-            this.descripcion.Validating += comprueba;
 
             //Label de precioInicial
             this._precio = new Label();
@@ -97,7 +109,6 @@ namespace Productos {
             this.precio.Size = this.likes.Size;
             this.precio.Location = new Point(this._precio.Location.X + 4, this._precio.Location.Y + this._precio.Size.Height + 10);
             Controls.Add(this.precio);
-            this.precio.Validating += comprueba;
 
             //Label Fecha
             this._fecha = new Label();
@@ -115,7 +126,7 @@ namespace Productos {
             this.fecha.Location = new Point(this._fecha.Location.X + 4, this._fecha.Location.Y + this._fecha.Size.Height + 10);
             Controls.Add(this.fecha);
             this.fecha.ValidatingType = typeof(DateTime);
-            this.fecha.TypeValidationCompleted += error;
+            this.fecha.TypeValidationCompleted += Funciones.Error;
 
             //Boton para agregar un nuevo producto
             this.agrega = new Button();
@@ -140,7 +151,7 @@ namespace Productos {
             this.men.Location = new Point(this.actualiza.Location.X, this.actualiza.Location.Y + this.actualiza.Height + 20);
             this.men.AutoSize = true;
             this.men.Width = this.actualiza.Width;
-            this.men.Click += regresa;
+            this.men.Click += Funciones.Regresa;
             Controls.Add(this.men);
 
             //RadioBoton aceptar
@@ -149,7 +160,6 @@ namespace Productos {
             this.decide.Text = "Si";
             this.decide.Location = new Point(this.horaLocal.Location.X+this.horaLocal.Size.Width+10, this.horaLocal.Location.Y-1);
             Controls.Add(this.decide);
-            this.decide.CheckedChanged += activado_Decide;
 
             //RadioBoton cancelar
             this.decide2 = new RadioButton();
@@ -158,9 +168,14 @@ namespace Productos {
             this.decide2.Text = "No";
             this.decide2.Location = new Point(this.decide.Location.X+this.decide.Size.Width+10, this.decide.Location.Y);
             Controls.Add(this.decide2);
-            this.decide2.CheckedChanged += activado_Decide;
 
             desactiva_ActivaComponentes(false);
+
+            foreach(Control ctr in Controls) 
+                if(ctr is RadioButton)
+                    (ctr as RadioButton).CheckedChanged += activado_Decide;
+                else if(ctr is TextBoxBase && (ctr.Name!=this.code.Name||ctr.Name!=this.fecha.Name ))
+                    ctr.Validating += comprueba;
         }
     }
 }

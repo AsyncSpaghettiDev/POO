@@ -4,7 +4,6 @@ namespace Productos {
     /// Definicion de mercancía que tiene una caducidad, que se echa a perder, y que se le debe dar la debida rotación antes de que se deteriore y se haga no apta para la venta, o bien, que se convierta en merma.
     /// </summary>
     class ProductoPerecedero : Producto {
-        public ProductoPerecedero() { }
         /// <summary>
         /// Creacion de producto que requiere de rotacion para evitar merma.
         /// </summary>
@@ -24,7 +23,6 @@ namespace Productos {
     /// Definicion de aquellos artículos que son clasificados como no básicos,
     /// </summary>
     class ProductoNoPerecedero : Producto {
-        public ProductoNoPerecedero() { }
         /// <summary>
         /// Creacion de producto que no requiere de rotacion.
         /// </summary>
@@ -39,6 +37,5 @@ namespace Productos {
 
             this.precios = new PrecioFechaNP(tiempo, precioBase);
         }
-        
     }
 }

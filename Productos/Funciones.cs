@@ -2,20 +2,21 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
+using Productos;
 
 /// <summary>
-    /// Configuraciones genericas.
-    /// </summary>
+/// Configuraciones genericas.
+/// </summary>
 public class Funciones {
     /// <summary>
-        /// <para> Establece el tamaño de la ventana, y su icono
-        /// Ademas de dejar la ventana estática para evitar su redimension. </para>
-        /// </summary>
-        /// <param name="Lienzo"> Pasa la form actual, se recomienda usar this </param>
-        /// <param name="x">Ingresa la dimension X deseada de la ventana </param>
-        /// <param name="y">Ingresa la dimension Y deseada de la ventana </param>
-        /// <param name="Titulo">Ingresa el nombre deseado de la ventana</param>
-        /// <param name="nombre">Ingresa el nombre del icono de la ventana, nota: agregar en archivo recursos</param>
+    /// <para> Establece el tamaño de la ventana, y su icono
+    /// Ademas de dejar la ventana estática para evitar su redimension. </para>
+    /// </summary>
+    /// <param name="Lienzo"> Pasa la form actual, se recomienda usar this </param>
+    /// <param name="x">Ingresa la dimension X deseada de la ventana </param>
+    /// <param name="y">Ingresa la dimension Y deseada de la ventana </param>
+    /// <param name="Titulo">Ingresa el nombre deseado de la ventana</param>
+    /// <param name="nombre">Ingresa el nombre del icono de la ventana, nota: agregar en archivo recursos</param>
     public static void Diseno(Form Lienzo,int x,int y,String Titulo,String nombre) {
         Lienzo.Size = new Size(x, y);
         ComponentResourceManager imgs = new ComponentResourceManager(typeof(Productos.Properties.Resources));
@@ -30,4 +31,18 @@ public class Funciones {
         Lienzo.FormClosed += new FormClosedEventHandler(cerrar);
     }
     private static void cerrar(object sender, EventArgs e) => Application.Exit();
+
+    /// <summary>
+    /// Valida que la fecha ingresada sea correcta.
+    /// </summary>
+    public static void Error(object sender, TypeValidationEventArgs e) {
+        if (!e.IsValidInput) {
+            new ToolTip().Show("El formato debe ser el sig dd/mm/yyyy.", sender as Control, 5000);
+            e.Cancel = true;
+        }
+    }
+    public static void Regresa(object sender, EventArgs e) {
+        (sender as Control).Hide();
+        new Pantalla_Inicial().Show();
+    }
 }

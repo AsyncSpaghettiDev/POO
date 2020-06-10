@@ -1,13 +1,33 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Productos {
     partial class Consulta {
+        /// <summary>
+        /// TextBox para ingresar información de consulta.
+        /// </summary>
         MaskedTextBox B_Fecha,B_Departamento,B_Code;
+        /// <summary>
+        /// Botón para cambio de tipo de busqueda.
+        /// </summary>
         RadioButton S_Fecha,S_Departamento,S_Code;
+        /// <summary>
+        /// Pantalla donde se despliegan los datos.
+        /// </summary>
         ListBox resultado;
-        Button buscar,menu;
+        /// <summary>
+        /// Boton de vuelta al menu.
+        /// </summary>
+        Button menu;
+        /// <summary>
+        /// Boton que ejecuta la consulta
+        /// </summary>
+        Button buscar;
+        /// <summary>
+        /// Despliega correctamente todos los controles en la ventana.
+        /// </summary>
         void iniciaComponentes() {
             //Diseño de la ventana
             Funciones.Diseno(this, 420, 360, "Consulta de Inventario", "CLogo");
@@ -27,7 +47,7 @@ namespace Productos {
             this.B_Fecha.Location = new Point(this.S_Fecha.Location.X + (this.S_Fecha.Size.Width / 4), this.S_Fecha.Location.Y + this.S_Fecha.Size.Height + 10);
             this.B_Fecha.ValidatingType = typeof(DateTime);
             Controls.Add(this.B_Fecha);
-            this.B_Fecha.TypeValidationCompleted += error;
+            this.B_Fecha.TypeValidationCompleted += Funciones.Error;
 
             //Seleccionar busqueda por Departamento
             this.S_Departamento = new RadioButton();
@@ -78,7 +98,7 @@ namespace Productos {
             this.menu.AutoSize = true;
             this.menu.Location = new Point(this.resultado.Location.X+this.resultado.Size.Width-this.buscar.Size.Width, this.buscar.Location.Y);
             Controls.Add(this.menu);
-            this.menu.Click += regreso;
+            this.menu.Click += Funciones.Regresa;
 
             //Agregar eventos a RadioButtons
             foreach (Control ctr in Controls)

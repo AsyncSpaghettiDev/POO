@@ -4,143 +4,86 @@ using System.Windows.Forms;
 using System.ComponentModel;
 
 namespace Productos {
+    /// <summary>
+    /// Despliegue de Datos en formatos
+    /// </summary>
     class ProductBox:Form {
-        readonly Label CodigoDepartamento,Departamento,Codigo,Descripcion,Likes,FechaLanzamiento,PrecioLanzamiento,FechaMadurez,PrecioMadurez,FechaMerma,PrecioMerma,FechaMuerte;
-        readonly TextBox _CodigoDepartamento,_Departamento,_Codigo,_Descripcion,_Likes,_FechaLanzamiento,_PrecioLanzamiento,_FechaMadurez,_PrecioMadurez,_FechaMerma,_PrecioMerma,_FechaMuerte;
-        readonly Button cerrar;
+        /// <summary>
+        /// Instanciar form personalizada para desplegar datos de producto.
+        /// </summary>
+        /// <param name="prod">Información del producto en forma de string.</param>
         public ProductBox(String prod) {
+            // Lista con toda la información del producto a seleccionar.
             String[] datos=prod.Split('|');
+            // Texto que tendrán las etiquetas.
             String[] names= new String[] { 
-                "CodigoDepartamento",
+                "Codigo Departamento",
                 "Departamento",
                 "Codigo",
                 "Descripcion",
                 "Likes",
-                "FechaLanzamiento",
-                "PrecioLanzamiento",
-                "FechaMadurez",
-                "PrecioMadurez",
-                "FechaMerma",
-                "PrecioMerma",
-                "FechaMuerte" 
+                "Fecha Lanzamiento",
+                "Precio Lanzamiento",
+                "Fecha Madurez",
+                "Precio Madurez",
+                "Fecha Merma",
+                "Precio Merma",
+                "Fecha Muerte",
+                "Listo"
             };
-            diseno(270, 350, "Descripción Producto", "Prod");
-
-            this.CodigoDepartamento=  new Label();
-            this.CodigoDepartamento.Name = "ctr1";
-            Controls.Add(this.CodigoDepartamento);
-
-            this._CodigoDepartamento = new TextBox();
-            Controls.Add(this._CodigoDepartamento);
-
-            this.Departamento= new Label();
-            Controls.Add(this.Departamento);
-
-            this._Departamento = new TextBox();
-            Controls.Add(this._Departamento);
-
-            this.Codigo= new Label();
-            Controls.Add(this.Codigo);
-
-            this._Codigo = new TextBox();
-            Controls.Add(this._Codigo);
-
-            this.Descripcion= new Label();
-            Controls.Add(this.Descripcion);
-
-            this._Descripcion = new TextBox();
-            Controls.Add(this._Descripcion);
-
-            this.Likes= new Label();
-            Controls.Add(this.Likes);
-
-            this._Likes = new TextBox();
-            Controls.Add(this._Likes);
-
-            this.FechaLanzamiento= new Label();
-            Controls.Add(this.FechaLanzamiento);
-
-            this._FechaLanzamiento = new TextBox();
-            Controls.Add(this._FechaLanzamiento);
-
-            this.PrecioLanzamiento= new Label();
-            Controls.Add(this.PrecioLanzamiento);
-
-            this._PrecioLanzamiento = new TextBox();
-            Controls.Add(this._PrecioLanzamiento);
-
-            this.FechaMadurez= new Label();
-            Controls.Add(this.FechaMadurez);
-
-            this._FechaMadurez = new TextBox();
-            Controls.Add(this._FechaMadurez);
-
-            this.PrecioMadurez= new Label();
-            Controls.Add(this.PrecioMadurez);
-
-            this._PrecioMadurez = new TextBox();
-            Controls.Add(this._PrecioMadurez);
-
-            this.FechaMerma= new Label();
-            Controls.Add(this.FechaMerma);
-
-            this._FechaMerma = new TextBox();
-            Controls.Add(this._FechaMerma);
-
-            this.PrecioMerma= new Label();
-            Controls.Add(this.PrecioMerma);
-
-            this._PrecioMerma = new TextBox();
-            Controls.Add(this._PrecioMerma);
-
-            this.FechaMuerte= new Label();
-            Controls.Add(this.FechaMuerte);
-
-            this._FechaMuerte = new TextBox();
-            Controls.Add(this._FechaMuerte);
-
-            int i=0;
-            int j=0;
-            int k=0;
-            foreach(Control ctr in Controls) {
-
-                if (ctr is TextBox) {
-                    (ctr as TextBox).ReadOnly = true;
-                    ctr.Text = datos[i];
-                    i++;
-                }
-                if(ctr is Label) {
-                    (ctr as Label).AutoSize = true;
-                    ctr.Text = names[j];
-                    j++;
-                }
-                if (ctr.Name == this.CodigoDepartamento.Name)
-                    ctr.Location = new Point(10, 10);
-                else if(k<12)
-                    ctr.Location = new Point(10, Controls[k - 1].Location.Y + Controls[k - 1].Height + 5);
-                else
-                    ctr.Location = new Point(125, Controls[k -12 ].Location.Y);
-                k++;
-            }
-
-            this.cerrar = new Button();
-            this.cerrar.Location = new Point((Size.Width / 2) - (this.cerrar.Width / 2), this._FechaMuerte.Location.Y + this._FechaMuerte.Height + 10);
-            this.cerrar.Text = "Listo";
-            Controls.Add(this.cerrar);
-            this.cerrar.Click += ocultar;
-        }
-        void ocultar(object sender, EventArgs e) => Hide();
-        void diseno(int x, int y, String Titulo, String nombre) {
-            Size = new Size(x, y);
+            // Diseño de la form.
+            Size = new Size(295, 350);
             ComponentResourceManager imgs = new ComponentResourceManager(typeof(Properties.Resources));
-            Icon = imgs.GetObject(nombre) as Icon;
-            Text = Titulo;
+            Icon = imgs.GetObject("Prod") as Icon;
+            Text = "Descripción Producto";
 
             FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             MinimizeBox = false;
 
             StartPosition = FormStartPosition.CenterScreen;
+
+            // Rellenar la lista de Controles con etiquetas y textBox.
+            int j=0;
+            int k=0;
+
+            for (int i=0 ; i < 25 ;i++) {
+                // En caso que el contador sea 24 se crea un botón que será el cerrará.
+                if (i == 24) {
+                    Controls.Add(new Button());
+                    (Controls[i] as Button).Width = 50;
+                    (Controls[i] as Button).Location = new Point(112, 275);
+                    (Controls[i] as Button).Text = names[12];
+                    (Controls[i] as Button).Click += ocultar;
+                }
+                // En caso de que el resultado del residuo de 1/2 sea 0 se creará una etiqueta y se le asignará el nombre de la lista names
+                else if (i % 2 == 0) {
+                    Controls.Add(new Label());
+                    Controls[i].AutoSize = true;
+                    Controls[i].Text = names[j];
+                    j++;
+                }
+                // En caso que no sea ni 24 ni su modulo sea 0 se creará un textBox
+                else {
+                    Controls.Add(new TextBox());
+                    (Controls[i] as TextBox).ReadOnly = true;
+                    Controls[i].Text = datos[k];
+                    k++;
+                }
+                // Para el primer control se le asignará la posicion de 25,10
+                if (i == 0)
+                    Controls[i].Location = new Point(25, 10);
+                // Para todos aquellos en el que el contador sea menor de 12 estarán en la primer columna.
+                else if (i < 12)
+                    Controls[i].Location = new Point(Controls[i - 1].Location.X, Controls[i - 1].Location.Y + Controls[i - 1].Height + 5);
+                // Los siguientes, menos el 24, estarán en la segunda columna.
+                else if (i < 24)
+                    Controls[i].Location = new Point(150, Controls[i - 12].Location.Y);
+            }
         }
+        /// <summary>
+        /// Cierra la ventana actual para mostrar el menú de Consulta.
+        /// </summary>
+        void ocultar(object sender, EventArgs e) => Hide();
     }
 }

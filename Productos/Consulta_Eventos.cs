@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Productos {
     partial class Consulta {
+        /// <summary>
+        /// Evento que activa cierto textBox de acorde al boton pulsado.
+        /// </summary>
         void cambiar_Seleccion(object sender,EventArgs e) {
             if (this.S_Fecha.Checked)
                 focus(0);
@@ -12,8 +15,13 @@ namespace Productos {
             if (this.S_Code.Checked)
                 focus(2);
         }
-        void focus(int casilla) {
-            switch (casilla) {
+        /// <summary>
+        /// Activa y centra cierto control de acorde al número al número de este.
+        /// Desactiva todos los demás controles.
+        /// </summary>
+        /// <param name="Casilla">Valor de 0-2 que indica el control de izq a derecha.</param>
+        void focus(int Casilla) {
+            switch (Casilla) {
                 case 0:
                     this.B_Fecha.Enabled = true;
                     this.B_Fecha.Focus();
@@ -40,16 +48,17 @@ namespace Productos {
                     break;
             }
         }
-        void error(object sender, TypeValidationEventArgs e) {
-            if (!e.IsValidInput) {
-                new ToolTip().Show("El formato debe ser el sig dd/mm/yyyy.", this.S_Fecha, 5000);
-                e.Cancel = true;
-            }
-        }
+        /// <summary>
+        /// Ejecuta la consulta en la DB de acorde al botón seleccionado.
+        /// </summary>
+        /// <exception cref="NullReferenceException"></exception>
+        /// <exception cref="FormatException"></exception>
+        /// <exception cref="ResultadoNuloException"></exception>
         void busqueda(object sender, EventArgs e) {
             try {
                 this.resultado.Items.Clear();
                 List<Producto> resul=null;
+
                 if (this.S_Fecha.Checked) {
                     int [] fecha=Array.ConvertAll(this.B_Fecha.Text.Split('/'),int.Parse);
                     InventarioDB.Consulta(new DateTime(fecha[2], fecha[1], fecha[0]),out resul);
@@ -76,10 +85,10 @@ namespace Productos {
                 MessageBox.Show(ex.ToString());
             }
         }
-        void regreso(object sender, EventArgs e) {
-            Hide();
-            new Pantalla_Inicial().Show();
-        }
+        /// <summary>
+        /// Despliega una ventana con toda la información del producto consultado.
+        /// </summary>
+        /// <exception cref="NullReferenceException"></exception>
         void mostrar(object sender, EventArgs e) {
             try {
                 new ProductBox(this.resultado.SelectedItem.ToString()).Show();

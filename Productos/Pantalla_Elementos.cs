@@ -1,12 +1,20 @@
-﻿using System;
+﻿using System.IO;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace Productos {
     partial class Pantalla_Inicial {
+        /// <summary>
+        /// Imagen para redireccionar.
+        /// </summary>
         PictureBox img_registro,img_consulta;
+        /// <summary>
+        /// TextBox con un path.
+        /// </summary>
         TextBox p_Inv,p_Dep;
+        /// <summary>
+        /// Boton de carga o seleccion de path.
+        /// </summary>
         Button c_Inv,c_Dep,carga_L;
         void iniciaComponentes() {
             //PictureBox rederecciona registro
@@ -75,6 +83,10 @@ namespace Productos {
             this.carga_L.Name = "Cargar listas";
             Controls.Add(this.carga_L);
 
+            /*
+             * A los controles PictureBox se le agregan los eventos mouse enter, mouse leave, y click
+             * A los botones se les añade el evento click.
+             */
             foreach (Control ctr in Controls)
                 if (ctr is PictureBox) {
                     ctr.Click += entrar;

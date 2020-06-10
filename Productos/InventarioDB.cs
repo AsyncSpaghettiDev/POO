@@ -5,13 +5,23 @@ using System.Windows.Forms;
 
 namespace Productos {
     class InventarioDB {
+        /// <summary>
+        /// Lista interna que contiene todos los departamentos de la DB departamentos.
+        /// </summary>
         public static List<Departamento> departamentos = new List<Departamento>();
+        /// <summary>
+        /// Lista interna que contiene todos los productos de la DB inventario.
+        /// </summary>
         public static List<Producto> inventario = new List<Producto>();
+        /// <summary>
+        /// Se guarda la lista interna inventario en la DB inventario
+        /// </summary>
+        /// <param name="path">Ubicación de la DB inventario</param>
         public static void Guardar_Listas(string path) {
             StreamWriter textOut=null;
             try {
                 textOut = new StreamWriter(new FileStream(path, FileMode.Create, FileAccess.Write));
-                textOut.WriteLine(new ProductoPerecedero().txt_Header());
+                textOut.WriteLine(Producto.txt_Header);
                 foreach (Producto cat in inventario)
                     textOut.WriteLine(cat.ToString());
             }
@@ -23,6 +33,12 @@ namespace Productos {
                     textOut.Close();
             }
         }
+        /// <summary>
+        /// Carga los elementos de un DB a la lista interna correspondiente.
+        /// </summary>
+        /// <param name="path">Ubicación de la lista a cargar</param>
+        /// <param name="lista">Identificador de la lista interna donde se cargará.</param>
+        /// <exception cref="FileNotFoundException"></exception>
         public static void Cargar_Listas(string path, int lista) {
             StreamReader textIn=null;
             try {
@@ -30,6 +46,7 @@ namespace Productos {
                 textIn = new StreamReader(new FileStream(
                     path,
                     FileMode.Open, FileAccess.Read));
+                // Se lee la primer linea y no se almacena porque en esta línea están los headers de la DB
                 textIn.ReadLine();
                 while (textIn.Peek() != -1) {
                     campos = textIn.ReadLine().Split('|');
@@ -58,11 +75,23 @@ namespace Productos {
                     textIn.Close();
             }
         }
+        /// <summary>
+        /// Determina si un departamento está en la lista interna departamentos.
+        /// </summary>
+        /// <param name="code">Codigo del departamento a evaluar.</param>
+        /// <returns>En caso de no existir se lanza una excepción.</returns>
+        /// <exception cref="InvalidDepartamentException"></exception>
         public static bool Contains (string code) {
             foreach (Departamento dep in departamentos)
                     return dep.serie == code;
             throw new InvalidDepartamentException();
         }
+        /// <summary>
+        /// Determina si un producto existe en la lista interna inventario.
+        /// </summary>
+        /// <param name="code">Codigo del producto a evaluar.</param>
+        /// <param name="depa">Codigo del departamento del producto a evaluar</param>
+        /// <returns>Un producto de la lista interna.</returns>
         public static Producto Contain (string code,string depa) {
             foreach (Producto prod in inventario) {
                 if (prod.codigo.Contains(code) && prod.departamento.serie.Contains(depa))
@@ -70,10 +99,14 @@ namespace Productos {
                 }
             return null;
         }
+        /// <summary>
+        /// Despliega una ventana para cargar una DB.
+        /// </summary>
+        /// <param name="lista">Identificador de lista interna a cargar</param>
         public static void DeployFD(int lista) {
             OpenFileDialog ventanaSelect = new OpenFileDialog();
             string path;
-            ventanaSelect.Title = "Carga archivo con Inventario";
+            ventanaSelect.Title = "Carga archivo de Base de Datos";
             ventanaSelect.InitialDirectory = @"%userprofile%\Desktop";
             ventanaSelect.Filter = "Database files (*.txt)|*.txt";
             ventanaSelect.FilterIndex = 0;
@@ -88,6 +121,12 @@ namespace Productos {
 
             Cargar_Listas(path, lista);
         }
+        /// <summary>
+        /// Consulta a la DB Inventarios evaluando la fecha.
+        /// </summary>
+        /// <param name="B_Fec">Fecha que se comparará</param>
+        /// <param name="respu">Lista que contendrá los resultados.</param>
+        /// <exception cref="ResultadoNuloException"></exception>
         public static void Consulta(DateTime B_Fec, out List<Producto> respu) {
             respu = new List<Producto>();
 
@@ -98,6 +137,12 @@ namespace Productos {
             if (respu.Count < 1)
                 throw new ResultadoNuloException();
         }
+        /// <summary>
+        /// Consulta a la DB inventario evaluando el código del Departamento o el código del producto.
+        /// </summary>
+        /// <param name="Busqueda">Código del Departamento o Código del producto a evaluar.</param>
+        /// <param name="respu">Lista de resultados.</param>
+        /// <exception cref="ResultadoNuloException"></exception>
         public static void Consulta(String Busqueda, out List<Producto> respu) {
             respu = new List<Producto>();
 

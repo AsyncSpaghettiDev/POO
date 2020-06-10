@@ -87,7 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractas_Interfaces.cs" />
+    <Compile Include="Abstractas.cs" />
     <Compile Include="Consulta.cs">
       <SubType>Form</SubType>
     </Compile>
