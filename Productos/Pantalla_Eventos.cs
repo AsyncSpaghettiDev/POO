@@ -11,11 +11,14 @@ namespace Productos {
         void entrar(object sender, EventArgs e) {
             try {
                 // En caso que las listas internas estén vacias se arroja una excepción 
-                if (InventarioDB.inventario.Count < 1||InventarioDB.departamentos.Count<1)
+                if (InventarioDB.departamentos.Count<1)
                     throw new ResultadoNuloException();
                 // Se redirecciona a la Pantalla correspondiente y se cierra la actual.
-                if ((sender as Control).Name == this.img_consulta.Name) 
-                    new Consulta().Show();
+                if ((sender as Control).Name == this.img_consulta.Name)
+                    if (InventarioDB.inventario.Count < 1)
+                        throw new ResultadoNuloException();
+                    else
+                        new Consulta().Show();
                 else if ((sender as Control).Name == this.img_registro.Name)
                     new Inventario(this.p_Inv.Text).Show();
                 Hide();
